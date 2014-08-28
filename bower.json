@@ -1,5 +1,6 @@
 {
   "name": "rakugaki-box.net",
   "devDependencies": {
+    "jquery": "2.1.1"
   }
 }
