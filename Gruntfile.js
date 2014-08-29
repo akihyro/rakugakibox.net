@@ -1,11 +1,7 @@
 module.exports = function(grunt) {
 
-  // NPMタスクをロードする
-  grunt.loadNpmTasks('grunt-contrib-compass');
-  grunt.loadNpmTasks('grunt-contrib-csslint');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-sftp-deploy');
+  // タスクをロードする
+  require('load-grunt-tasks')(grunt);
 
   // 設定を初期化する
   grunt.initConfig({
