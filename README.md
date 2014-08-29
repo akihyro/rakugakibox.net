@@ -87,3 +87,21 @@ $ grunt deploy
 ```
 $ grunt deploy --env=pro
 ```
+
+
+クリーン手順
+------------
+
+### クリーン
+
+#### 開発用
+
+```
+$ grunt clean
+```
+
+#### 公開用
+
+```
+$ grunt clean --env=pro
+```
