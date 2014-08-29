@@ -17,6 +17,14 @@ module.exports = function(grunt) {
 
     // コピー
     "copy": {
+      "htaccess": {
+        files: [
+          {
+            src: "src/.htaccess",
+            dest: "dest.<%= rbox.env %>/.htaccess",
+          },
+        ],
+      },
       "fonts": {
         files: [
           {
@@ -148,10 +156,14 @@ module.exports = function(grunt) {
     "jshint:gruntfile",
   ]);
   grunt.registerTask("build", [
+    "htaccess",
     "fonts",
     "images",
     "styles",
     "scripts",
+  ]);
+  grunt.registerTask("htaccess", [
+    "copy:htaccess",
   ]);
   grunt.registerTask("fonts", [
     "copy:fonts",
