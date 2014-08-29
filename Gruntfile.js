@@ -17,6 +17,16 @@ module.exports = function(grunt) {
 
     // コピー
     "copy": {
+      "images": {
+        files: [
+          {
+            expand: true,
+            cwd: "src/images",
+            src: "*.png",
+            dest: "dest.<%= rbox.env %>/images",
+          },
+        ],
+      },
       "scripts": {
         files: [
           {
@@ -119,12 +129,16 @@ module.exports = function(grunt) {
   // タスクを登録する
   grunt.registerTask("default", [
     "gruntfile",
+    "images",
     "styles",
     "scripts",
     "deploy",
   ]);
   grunt.registerTask("gruntfile", [
     "jshint:gruntfile",
+  ]);
+  grunt.registerTask("images", [
+    "copy:images",
   ]);
   grunt.registerTask("styles", [
     "compass:styles",
