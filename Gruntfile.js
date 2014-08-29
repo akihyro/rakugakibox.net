@@ -1,13 +1,13 @@
 module.exports = function(grunt) {
 
   // タスクをロードする
-  require('load-grunt-tasks')(grunt);
+  require("load-grunt-tasks")(grunt);
 
   // 設定を初期化する
   grunt.initConfig({
 
     // rakugaki-box.net
-    "rbox": (function() {
+    rbox: (function() {
       var rbox = { };
       rbox.env = grunt.option("env") == "pro" ? "pro" : "dev";
       rbox.envPro = rbox.env == "pro";
@@ -16,8 +16,8 @@ module.exports = function(grunt) {
     })(),
 
     // コピー
-    "copy": {
-      "htaccess": {
+    copy: {
+      htaccess: {
         files: [
           {
             src: "src/.htaccess",
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
           },
         ],
       },
-      "fonts": {
+      fonts: {
         files: [
           {
             expand: true,
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
           },
         ],
       },
-      "images": {
+      images: {
         files: [
           {
             expand: true,
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
           },
         ],
       },
-      "scripts": {
+      scripts: {
         files: [
           {
             expand: true,
@@ -70,8 +70,8 @@ module.exports = function(grunt) {
     },
 
     // compass
-    "compass": {
-      "styles": {
+    compass: {
+      styles: {
         options: {
           environment: "<%= rbox.envPro ? 'production' : 'development' %>",
           bundleExec: true,
@@ -83,18 +83,18 @@ module.exports = function(grunt) {
     },
 
     // CSS検証
-    "csslint": {
-      "styles": {
+    csslint: {
+      styles: {
         src: "dest.<%= rbox.env %>/styles/**/*.css",
       },
     },
 
     // CSS縮小化
-    "cssmin": {
-      "options": {
+    cssmin: {
+      options: {
         keepSpecialComments: 0,
       },
-      "styles": {
+      styles: {
         files: {
           "dest.<%= rbox.env %>/styles/rakugaki-box.net.min.css": [
             "dest.<%= rbox.env %>/styles/rakugaki-box.net.css",
@@ -104,24 +104,24 @@ module.exports = function(grunt) {
     },
 
     // JS検証
-    "jshint": {
-      "options": {
+    jshint: {
+      options: {
         expr: true
       },
-      "gruntfile": [
+      gruntfile: [
         "Gruntfile.js",
       ],
-      "scripts": [
+      scripts: [
         "dest.<%= rbox.env %>/scripts/rakugaki-box.net.js",
       ],
     },
 
     // JS縮小化
-    "uglify": {
-      "options": {
+    uglify: {
+      options: {
         preserveComments: false,
       },
-      "scripts": {
+      scripts: {
         files: {
           "dest.<%= rbox.env %>/scripts/rakugaki-box.net.min.js": [
             "dest.<%= rbox.env %>/scripts/jquery.min.js",
@@ -133,7 +133,7 @@ module.exports = function(grunt) {
 
     // デプロイ
     "sftp-deploy": {
-      "dest": {
+      dest: {
         auth: {
           host: "rakugaki-box.net",
           port: 22,
@@ -145,8 +145,8 @@ module.exports = function(grunt) {
     },
 
     // クリーン
-    "clean": {
-      "dest": [
+    clean: {
+      dest: [
         "dest.<%= rbox.env %>",
       ],
     },
