@@ -5,15 +5,29 @@ module.exports = function(grunt) {
 
   // 設定を初期化する
   grunt.initConfig({
+
+    // compass
     compass: {
-      dist: {
+      dev: {
         options: {
+          environment: "development",
           bundleExec: true,
-          sassDir: "styles.src",
-          cssDir: "styles"
+          sassDir: "src/styles",
+          cssDir: "dest.dev/styles",
+          outputStyle: "expanded"
+        }
+      },
+      pro: {
+        options: {
+          environment: "production",
+          bundleExec: true,
+          sassDir: "src/styles",
+          cssDir: "dest.pro/styles",
+          outputStyle: "expanded"
         }
       }
     }
+
   });
 
 };
