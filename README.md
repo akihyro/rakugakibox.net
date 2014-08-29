@@ -57,51 +57,23 @@ $ vi .ftppass
 ```
 
 
-ビルド/デプロイ手順
--------------------
+Grunt タスク
+------------
 
 ### ビルド
 
-#### 開発用
-
 ```
-$ grunt build
-```
-
-#### 公開用
-
-```
-$ grunt build --env=pro
+$ grunt build --env=[dev|pro]
 ```
 
 ### デプロイ
 
-#### 開発用
-
 ```
-$ grunt deploy
+$ grunt deploy --env=[dev|pro]
 ```
-
-#### 公開用
-
-```
-$ grunt deploy --env=pro
-```
-
-
-クリーン手順
-------------
 
 ### クリーン
 
-#### 開発用
-
 ```
-$ grunt clean
-```
-
-#### 公開用
-
-```
-$ grunt clean --env=pro
+$ grunt clean --env=[dev|pro]
 ```
