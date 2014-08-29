@@ -2,6 +2,7 @@ module.exports = function(grunt) {
 
   // NPMタスクをロードする
   grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   // 設定を初期化する
   grunt.initConfig({
@@ -26,6 +27,16 @@ module.exports = function(grunt) {
           outputStyle: "expanded"
         }
       }
+    },
+
+    // クリーン
+    clean: {
+      dev: [
+        "dest.dev"
+      ],
+      pro: [
+        "dest.pro"
+      ]
     }
 
   });
