@@ -64,4 +64,15 @@ module.exports = function(grunt) {
 
   });
 
+  // タスクを登録する
+  grunt.registerTask("default", "dev");
+  grunt.registerTask("dev", [
+    "compass:styles.dev",
+    "sftp-deploy:dest.dev",
+  ]);
+  grunt.registerTask("pro", [
+    "compass:styles.pro",
+    "sftp-deploy:dest.pro",
+  ]);
+
 };
