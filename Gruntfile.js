@@ -91,6 +91,9 @@ module.exports = function(grunt) {
 
     // CSS縮小化
     "cssmin": {
+      "options": {
+        keepSpecialComments: 0,
+      },
       "styles": {
         files: {
           "dest.<%= rbox.env %>/styles/rakugaki-box.net.min.css": [
