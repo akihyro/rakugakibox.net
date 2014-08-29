@@ -2,6 +2,7 @@ module.exports = function(grunt) {
 
   // NPMタスクをロードする
   grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-sftp-deploy');
 
@@ -26,6 +27,20 @@ module.exports = function(grunt) {
           sassDir: "src/styles",
           cssDir: "dest.pro/styles",
           outputStyle: "expanded",
+        },
+      },
+    },
+
+    // CSS縮小化
+    "cssmin": {
+      "styles.dev": {
+        files: {
+          "dest.dev/styles/rakugaki-box.net.min.css": "dest.dev/styles/rakugaki-box.net.css",
+        },
+      },
+      "styles.pro": {
+        files: {
+          "dest.pro/styles/rakugaki-box.net.min.css": "dest.pro/styles/rakugaki-box.net.css",
         },
       },
     },
@@ -68,10 +83,12 @@ module.exports = function(grunt) {
   grunt.registerTask("default", "dev");
   grunt.registerTask("dev", [
     "compass:styles.dev",
+    "cssmin:styles.dev",
     "sftp-deploy:dest.dev",
   ]);
   grunt.registerTask("pro", [
     "compass:styles.pro",
+    "cssmin:styles.pro",
     "sftp-deploy:dest.pro",
   ]);
 
