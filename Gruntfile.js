@@ -6,6 +6,42 @@ module.exports = function(grunt) {
   // 設定を初期化する
   grunt.initConfig({
 
+    // コピー
+    "copy": {
+      "scripts.dev": {
+        files: [
+          {
+            src: "bower_components/jquery/dist/jquery.js",
+            dest: "dest.dev/scripts/jquery.js",
+          },
+          {
+            src: "bower_components/jquery/dist/jquery.min.js",
+            dest: "dest.dev/scripts/jquery.min.js",
+          },
+          {
+            src: "src/scripts/rakugaki-box.net.js",
+            dest: "dest.dev/scripts/rakugaki-box.net.js",
+          },
+        ],
+      },
+      "scripts.pro": {
+        files: [
+          {
+            src: "bower_components/jquery/dist/jquery.js",
+            dest: "dest.pro/scripts/jquery.js",
+          },
+          {
+            src: "bower_components/jquery/dist/jquery.min.js",
+            dest: "dest.pro/scripts/jquery.min.js",
+          },
+          {
+            src: "src/scripts/rakugaki-box.net.js",
+            dest: "dest.pro/scripts/rakugaki-box.net.js",
+          },
+        ],
+      },
+    },
+
     // compass
     "compass": {
       "styles.dev": {
@@ -58,10 +94,10 @@ module.exports = function(grunt) {
         expr: true
       },
       "scripts.dev": [
-        "src/scripts/**/*.js",
+        "dest.dev/scripts/rakugaki-box.net.js",
       ],
       "scripts.pro": [
-        "src/scripts/**/*.js",
+        "dest.pro/scripts/rakugaki-box.net.js",
       ],
     },
 
@@ -128,6 +164,7 @@ module.exports = function(grunt) {
     "compass:styles.dev",
     "csslint:styles.dev",
     "cssmin:styles.dev",
+    "copy:scripts.dev",
     "jshint:scripts.dev",
     "uglify:scripts.dev",
     "sftp-deploy:dest.dev",
@@ -136,6 +173,7 @@ module.exports = function(grunt) {
     "compass:styles.pro",
     "csslint:styles.pro",
     "cssmin:styles.pro",
+    "copy:scripts.pro",
     "jshint:scripts.pro",
     "uglify:scripts.pro",
     "sftp-deploy:dest.pro",

@@ -1,0 +1,5 @@
+/*! rakugaki-box.net */
+
+!function($) {
+
+}($);
