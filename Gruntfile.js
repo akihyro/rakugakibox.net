@@ -3,6 +3,7 @@ module.exports = function(grunt) {
   // NPMタスクをロードする
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-sftp-deploy');
 
   // 設定を初期化する
   grunt.initConfig({
@@ -26,6 +27,28 @@ module.exports = function(grunt) {
           cssDir: "dest.pro/styles",
           outputStyle: "expanded"
         }
+      }
+    },
+
+    // SFTPアップロード
+    "sftp-deploy": {
+      dev: {
+        auth: {
+          host: "rakugaki-box.net",
+          port: 22,
+          authKey: "dev"
+        },
+        src: "dest.dev",
+        dest: "/virtual/akihyrox/public_html/resource.blog.dev2.rakugaki-box.net"
+      },
+      pro: {
+        auth: {
+          host: "rakugaki-box.net",
+          port: 22,
+          authKey: "pro"
+        },
+        src: "dest.pro",
+        dest: "/virtual/akihyrox/public_html/resource.blog.pro2.rakugaki-box.net"
       }
     },
 

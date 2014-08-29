@@ -39,3 +39,19 @@ $ bower install
 ```
 $ bundle install
 ```
+
+### SFTP アップロード先 ログイン情報設定
+
+```
+$ vi .ftppass
+{
+  "dev": {
+    "username" : "your_username",
+    "password" : "your_password"
+  },
+  "pro": {
+    "username" : "your_username",
+    "password" : "your_password"
+  }
+}
+```
