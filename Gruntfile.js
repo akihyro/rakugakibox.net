@@ -65,6 +65,29 @@ module.exports = function(grunt) {
       ],
     },
 
+    // JS縮小化
+    "uglify": {
+      "options": {
+        preserveComments: false,
+      },
+      "scripts.dev": {
+        files: {
+          "dest.dev/scripts/rakugaki-box.net.min.js": [
+            "dest.dev/scripts/jquery.min.js",
+            "dest.dev/scripts/rakugaki-box.net.js",
+          ],
+        },
+      },
+      "scripts.pro": {
+        files: {
+          "dest.pro/scripts/rakugaki-box.net.min.js": [
+            "dest.pro/scripts/jquery.min.js",
+            "dest.pro/scripts/rakugaki-box.net.js",
+          ],
+        },
+      },
+    },
+
     // SFTPアップロード
     "sftp-deploy": {
       "dest.dev": {
@@ -106,6 +129,7 @@ module.exports = function(grunt) {
     "csslint:styles.dev",
     "cssmin:styles.dev",
     "jshint:scripts.dev",
+    "uglify:scripts.dev",
     "sftp-deploy:dest.dev",
   ]);
   grunt.registerTask("pro", [
@@ -113,6 +137,7 @@ module.exports = function(grunt) {
     "csslint:styles.pro",
     "cssmin:styles.pro",
     "jshint:scripts.pro",
+    "uglify:scripts.pro",
     "sftp-deploy:dest.pro",
   ]);
 
