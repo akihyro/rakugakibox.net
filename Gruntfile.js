@@ -16,8 +16,8 @@ module.exports = function(grunt) {
           bundleExec: true,
           sassDir: "src/styles",
           cssDir: "dest.dev/styles",
-          outputStyle: "expanded"
-        }
+          outputStyle: "expanded",
+        },
       },
       "styles.pro": {
         options: {
@@ -25,9 +25,9 @@ module.exports = function(grunt) {
           bundleExec: true,
           sassDir: "src/styles",
           cssDir: "dest.pro/styles",
-          outputStyle: "expanded"
-        }
-      }
+          outputStyle: "expanded",
+        },
+      },
     },
 
     // SFTPアップロード
@@ -36,31 +36,31 @@ module.exports = function(grunt) {
         auth: {
           host: "rakugaki-box.net",
           port: 22,
-          authKey: "dev"
+          authKey: "dev",
         },
         src: "dest.dev",
-        dest: "/virtual/akihyrox/public_html/resource.blog.dev2.rakugaki-box.net"
+        dest: "/virtual/akihyrox/public_html/resource.blog.dev2.rakugaki-box.net",
       },
       "dest.pro": {
         auth: {
           host: "rakugaki-box.net",
           port: 22,
-          authKey: "pro"
+          authKey: "pro",
         },
         src: "dest.pro",
-        dest: "/virtual/akihyrox/public_html/resource.blog.pro2.rakugaki-box.net"
-      }
+        dest: "/virtual/akihyrox/public_html/resource.blog.pro2.rakugaki-box.net",
+      },
     },
 
     // クリーン
     "clean": {
       "dest.dev": [
-        "dest.dev"
+        "dest.dev",
       ],
       "dest.pro": [
-        "dest.pro"
-      ]
-    }
+        "dest.pro",
+      ],
+    },
 
   });
 
