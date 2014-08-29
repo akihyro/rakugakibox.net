@@ -93,6 +93,9 @@ module.exports = function(grunt) {
       "options": {
         expr: true
       },
+      "gruntfile": [
+        "Gruntfile.js",
+      ],
       "scripts.dev": [
         "dest.dev/scripts/rakugaki-box.net.js",
       ],
@@ -161,6 +164,7 @@ module.exports = function(grunt) {
   // タスクを登録する
   grunt.registerTask("default", "dev");
   grunt.registerTask("dev", [
+    "jshint:gruntfile",
     "compass:styles.dev",
     "csslint:styles.dev",
     "cssmin:styles.dev",
@@ -170,6 +174,7 @@ module.exports = function(grunt) {
     "sftp-deploy:dest.dev",
   ]);
   grunt.registerTask("pro", [
+    "jshint:gruntfile",
     "compass:styles.pro",
     "csslint:styles.pro",
     "cssmin:styles.pro",
