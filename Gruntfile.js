@@ -17,6 +17,21 @@ module.exports = function(grunt) {
 
     // コピー
     "copy": {
+      "fonts": {
+        files: [
+          {
+            expand: true,
+            cwd: "bower_components/font-awesome/fonts",
+            src: [
+              "fontawesome-webfont.eot",
+              "fontawesome-webfont.svg",
+              "fontawesome-webfont.ttf",
+              "fontawesome-webfont.woff",
+            ],
+            dest: "dest.<%= rbox.env %>/fonts",
+          },
+        ],
+      },
       "images": {
         files: [
           {
@@ -30,12 +45,13 @@ module.exports = function(grunt) {
       "scripts": {
         files: [
           {
-            src: "bower_components/jquery/dist/jquery.js",
-            dest: "dest.<%= rbox.env %>/scripts/jquery.js",
-          },
-          {
-            src: "bower_components/jquery/dist/jquery.min.js",
-            dest: "dest.<%= rbox.env %>/scripts/jquery.min.js",
+            expand: true,
+            cwd: "bower_components/jquery/dist",
+            src: [
+              "jquery.js",
+              "jquery.min.js",
+            ],
+            dest: "dest.<%= rbox.env %>/scripts",
           },
           {
             src: "src/scripts/rakugaki-box.net.js",
@@ -132,9 +148,13 @@ module.exports = function(grunt) {
     "jshint:gruntfile",
   ]);
   grunt.registerTask("build", [
+    "fonts",
     "images",
     "styles",
     "scripts",
+  ]);
+  grunt.registerTask("fonts", [
+    "copy:fonts",
   ]);
   grunt.registerTask("images", [
     "copy:images",
