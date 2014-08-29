@@ -6,37 +6,30 @@ module.exports = function(grunt) {
   // 設定を初期化する
   grunt.initConfig({
 
+    // rakugaki-box.net
+    "rbox": (function() {
+      var rbox = { };
+      rbox.env = grunt.option("env") == "pro" ? "pro" : "dev";
+      rbox.envPro = rbox.env == "pro";
+      rbox.envDev = rbox.env == "dev";
+      return rbox;
+    })(),
+
     // コピー
     "copy": {
-      "scripts.dev": {
+      "scripts": {
         files: [
           {
             src: "bower_components/jquery/dist/jquery.js",
-            dest: "dest.dev/scripts/jquery.js",
+            dest: "dest.<%= rbox.env %>/scripts/jquery.js",
           },
           {
             src: "bower_components/jquery/dist/jquery.min.js",
-            dest: "dest.dev/scripts/jquery.min.js",
+            dest: "dest.<%= rbox.env %>/scripts/jquery.min.js",
           },
           {
             src: "src/scripts/rakugaki-box.net.js",
-            dest: "dest.dev/scripts/rakugaki-box.net.js",
-          },
-        ],
-      },
-      "scripts.pro": {
-        files: [
-          {
-            src: "bower_components/jquery/dist/jquery.js",
-            dest: "dest.pro/scripts/jquery.js",
-          },
-          {
-            src: "bower_components/jquery/dist/jquery.min.js",
-            dest: "dest.pro/scripts/jquery.min.js",
-          },
-          {
-            src: "src/scripts/rakugaki-box.net.js",
-            dest: "dest.pro/scripts/rakugaki-box.net.js",
+            dest: "dest.<%= rbox.env %>/scripts/rakugaki-box.net.js",
           },
         ],
       },
@@ -44,21 +37,12 @@ module.exports = function(grunt) {
 
     // compass
     "compass": {
-      "styles.dev": {
+      "styles": {
         options: {
-          environment: "development",
+          environment: "<%= rbox.envPro ? 'production' : 'development' %>",
           bundleExec: true,
           sassDir: "src/styles",
-          cssDir: "dest.dev/styles",
-          outputStyle: "expanded",
-        },
-      },
-      "styles.pro": {
-        options: {
-          environment: "production",
-          bundleExec: true,
-          sassDir: "src/styles",
-          cssDir: "dest.pro/styles",
+          cssDir: "dest.<%= rbox.env %>/styles",
           outputStyle: "expanded",
         },
       },
@@ -66,24 +50,18 @@ module.exports = function(grunt) {
 
     // CSS検証
     "csslint": {
-      "styles.dev": {
-        src: "dest.dev/styles/**/*.css",
-      },
-      "styles.pro": {
-        src: "dest.pro/styles/**/*.css",
+      "styles": {
+        src: "dest.<%= rbox.env %>/styles/**/*.css",
       },
     },
 
     // CSS縮小化
     "cssmin": {
-      "styles.dev": {
+      "styles": {
         files: {
-          "dest.dev/styles/rakugaki-box.net.min.css": "dest.dev/styles/rakugaki-box.net.css",
-        },
-      },
-      "styles.pro": {
-        files: {
-          "dest.pro/styles/rakugaki-box.net.min.css": "dest.pro/styles/rakugaki-box.net.css",
+          "dest.<%= rbox.env %>/styles/rakugaki-box.net.min.css": [
+            "dest.<%= rbox.env %>/styles/rakugaki-box.net.css",
+          ],
         },
       },
     },
@@ -96,11 +74,8 @@ module.exports = function(grunt) {
       "gruntfile": [
         "Gruntfile.js",
       ],
-      "scripts.dev": [
-        "dest.dev/scripts/rakugaki-box.net.js",
-      ],
-      "scripts.pro": [
-        "dest.pro/scripts/rakugaki-box.net.js",
+      "scripts": [
+        "dest.<%= rbox.env %>/scripts/rakugaki-box.net.js",
       ],
     },
 
@@ -109,19 +84,11 @@ module.exports = function(grunt) {
       "options": {
         preserveComments: false,
       },
-      "scripts.dev": {
+      "scripts": {
         files: {
-          "dest.dev/scripts/rakugaki-box.net.min.js": [
-            "dest.dev/scripts/jquery.min.js",
-            "dest.dev/scripts/rakugaki-box.net.js",
-          ],
-        },
-      },
-      "scripts.pro": {
-        files: {
-          "dest.pro/scripts/rakugaki-box.net.min.js": [
-            "dest.pro/scripts/jquery.min.js",
-            "dest.pro/scripts/rakugaki-box.net.js",
+          "dest.<%= rbox.env %>/scripts/rakugaki-box.net.min.js": [
+            "dest.<%= rbox.env %>/scripts/jquery.min.js",
+            "dest.<%= rbox.env %>/scripts/rakugaki-box.net.js",
           ],
         },
       },
@@ -129,59 +96,36 @@ module.exports = function(grunt) {
 
     // SFTPアップロード
     "sftp-deploy": {
-      "dest.dev": {
+      "dest": {
         auth: {
           host: "rakugaki-box.net",
           port: 22,
-          authKey: "dev",
+          authKey: "<%= rbox.env %>",
         },
-        src: "dest.dev",
-        dest: "/virtual/akihyrox/public_html/resource.blog.dev2.rakugaki-box.net",
-      },
-      "dest.pro": {
-        auth: {
-          host: "rakugaki-box.net",
-          port: 22,
-          authKey: "pro",
-        },
-        src: "dest.pro",
-        dest: "/virtual/akihyrox/public_html/resource.blog.pro2.rakugaki-box.net",
+        src: "dest.<%= rbox.env %>",
+        dest: "/virtual/akihyrox/public_html/resource.blog<%= rbox.envPro ? '.pro2' : '.dev2' %>.rakugaki-box.net",
       },
     },
 
     // クリーン
     "clean": {
-      "dest.dev": [
-        "dest.dev",
-      ],
-      "dest.pro": [
-        "dest.pro",
+      "dest": [
+        "dest.<%= rbox.env %>",
       ],
     },
 
   });
 
   // タスクを登録する
-  grunt.registerTask("default", "dev");
-  grunt.registerTask("dev", [
+  grunt.registerTask("default", [
     "jshint:gruntfile",
-    "compass:styles.dev",
-    "csslint:styles.dev",
-    "cssmin:styles.dev",
-    "copy:scripts.dev",
-    "jshint:scripts.dev",
-    "uglify:scripts.dev",
-    "sftp-deploy:dest.dev",
-  ]);
-  grunt.registerTask("pro", [
-    "jshint:gruntfile",
-    "compass:styles.pro",
-    "csslint:styles.pro",
-    "cssmin:styles.pro",
-    "copy:scripts.pro",
-    "jshint:scripts.pro",
-    "uglify:scripts.pro",
-    "sftp-deploy:dest.pro",
+    "compass:styles",
+    "csslint:styles",
+    "cssmin:styles",
+    "copy:scripts",
+    "jshint:scripts",
+    "uglify:scripts",
+    "sftp-deploy:dest",
   ]);
 
 };
