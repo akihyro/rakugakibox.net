@@ -2,6 +2,7 @@ module.exports = function(grunt) {
 
   // NPMタスクをロードする
   grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-csslint');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-sftp-deploy');
@@ -28,6 +29,16 @@ module.exports = function(grunt) {
           cssDir: "dest.pro/styles",
           outputStyle: "expanded",
         },
+      },
+    },
+
+    // CSS検証
+    "csslint": {
+      "styles.dev": {
+        src: "dest.dev/styles/**/*.css",
+      },
+      "styles.pro": {
+        src: "dest.pro/styles/**/*.css",
       },
     },
 
@@ -83,11 +94,13 @@ module.exports = function(grunt) {
   grunt.registerTask("default", "dev");
   grunt.registerTask("dev", [
     "compass:styles.dev",
+    "csslint:styles.dev",
     "cssmin:styles.dev",
     "sftp-deploy:dest.dev",
   ]);
   grunt.registerTask("pro", [
     "compass:styles.pro",
+    "csslint:styles.pro",
     "cssmin:styles.pro",
     "sftp-deploy:dest.pro",
   ]);
