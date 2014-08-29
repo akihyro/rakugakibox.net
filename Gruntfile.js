@@ -9,8 +9,8 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     // compass
-    compass: {
-      dev: {
+    "compass": {
+      "styles.dev": {
         options: {
           environment: "development",
           bundleExec: true,
@@ -19,7 +19,7 @@ module.exports = function(grunt) {
           outputStyle: "expanded"
         }
       },
-      pro: {
+      "styles.pro": {
         options: {
           environment: "production",
           bundleExec: true,
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
 
     // SFTPアップロード
     "sftp-deploy": {
-      dev: {
+      "dest.dev": {
         auth: {
           host: "rakugaki-box.net",
           port: 22,
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
         src: "dest.dev",
         dest: "/virtual/akihyrox/public_html/resource.blog.dev2.rakugaki-box.net"
       },
-      pro: {
+      "dest.pro": {
         auth: {
           host: "rakugaki-box.net",
           port: 22,
@@ -53,11 +53,11 @@ module.exports = function(grunt) {
     },
 
     // クリーン
-    clean: {
-      dev: [
+    "clean": {
+      "dest.dev": [
         "dest.dev"
       ],
-      pro: [
+      "dest.pro": [
         "dest.pro"
       ]
     }
