@@ -118,13 +118,25 @@ module.exports = function(grunt) {
 
   // タスクを登録する
   grunt.registerTask("default", [
+    "gruntfile",
+    "styles",
+    "scripts",
+    "deploy",
+  ]);
+  grunt.registerTask("gruntfile", [
     "jshint:gruntfile",
+  ]);
+  grunt.registerTask("styles", [
     "compass:styles",
     "csslint:styles",
     "cssmin:styles",
+  ]);
+  grunt.registerTask("scripts", [
     "copy:scripts",
     "jshint:scripts",
     "uglify:scripts",
+  ]);
+  grunt.registerTask("deploy", [
     "sftp-deploy:dest",
   ]);
 
