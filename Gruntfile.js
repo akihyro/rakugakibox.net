@@ -52,6 +52,19 @@ module.exports = function(grunt) {
       },
     },
 
+    // JS検証
+    "jshint": {
+      "options": {
+        expr: true
+      },
+      "scripts.dev": [
+        "src/scripts/**/*.js",
+      ],
+      "scripts.pro": [
+        "src/scripts/**/*.js",
+      ],
+    },
+
     // SFTPアップロード
     "sftp-deploy": {
       "dest.dev": {
@@ -92,12 +105,14 @@ module.exports = function(grunt) {
     "compass:styles.dev",
     "csslint:styles.dev",
     "cssmin:styles.dev",
+    "jshint:scripts.dev",
     "sftp-deploy:dest.dev",
   ]);
   grunt.registerTask("pro", [
     "compass:styles.pro",
     "csslint:styles.pro",
     "cssmin:styles.pro",
+    "jshint:scripts.pro",
     "sftp-deploy:dest.pro",
   ]);
 
