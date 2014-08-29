@@ -40,7 +40,7 @@ $ bower install
 $ bundle install
 ```
 
-### SFTP アップロード先 ログイン情報設定
+### デプロイ先 ログイン情報設定
 
 ```
 $ vi .ftppass
@@ -54,4 +54,36 @@ $ vi .ftppass
     "password" : "your_password"
   }
 }
+```
+
+
+ビルド/デプロイ手順
+-------------------
+
+### ビルド
+
+#### 開発用
+
+```
+$ grunt build
+```
+
+#### 公開用
+
+```
+$ grunt build --env=pro
+```
+
+### デプロイ
+
+#### 開発用
+
+```
+$ grunt deploy
+```
+
+#### 公開用
+
+```
+$ grunt deploy --env=pro
 ```

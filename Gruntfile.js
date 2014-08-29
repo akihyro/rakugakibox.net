@@ -127,13 +127,14 @@ module.exports = function(grunt) {
   });
 
   // タスクを登録する
-  grunt.registerTask("default", [
+  grunt.registerTask("default", "build");
+  grunt.registerTask("gruntfile", [
+    "jshint:gruntfile",
+  ]);
+  grunt.registerTask("build", [
     "images",
     "styles",
     "scripts",
-  ]);
-  grunt.registerTask("gruntfile", [
-    "jshint:gruntfile",
   ]);
   grunt.registerTask("images", [
     "copy:images",
