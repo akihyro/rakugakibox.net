@@ -137,7 +137,7 @@ module.exports = function(grunt) {
           authKey: "<%= rbox.env %>",
         },
         src: "dest.<%= rbox.env %>",
-        dest: "/virtual/akihyrox/public_html/resource.blog<%= rbox.envPro ? '.pro2' : '.dev2' %>.rakugaki-box.net",
+        dest: "/virtual/akihyrox/public_html/resource.blog<%= rbox.envPro ? '.pro2' : '.dev' %>.rakugaki-box.net",
       },
     },
 
