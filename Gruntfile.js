@@ -104,7 +104,7 @@ module.exports = function(grunt) {
       },
     },
 
-    // SFTPアップロード
+    // デプロイ
     "sftp-deploy": {
       "dest": {
         auth: {
@@ -128,11 +128,9 @@ module.exports = function(grunt) {
 
   // タスクを登録する
   grunt.registerTask("default", [
-    "gruntfile",
     "images",
     "styles",
     "scripts",
-    "deploy",
   ]);
   grunt.registerTask("gruntfile", [
     "jshint:gruntfile",
