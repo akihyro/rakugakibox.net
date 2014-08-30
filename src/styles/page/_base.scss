@@ -112,15 +112,18 @@ body {
 
 // コンテナインナー
 #content-inner {
+    @include rbox-columns-container;
     @include rbox-container-child-inner-content;
 }
 
 // メインラッパー
 #wrapper {
+    @include rbox-column($rbox-main-column-side, $rbox-main-column-width);
 }
 
 // モジュールラッパー
 #box2 {
+    @include rbox-column($rbox-module-column-side, $rbox-module-column-width);
 }
 
 
