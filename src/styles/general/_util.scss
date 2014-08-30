@@ -108,3 +108,9 @@
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
 }
+
+// フォントスムージング
+@mixin rbox-font-smoothing($value: true) {
+    -moz-osx-font-smoothing: if($value, grayscale, auto);
+    -webkit-font-smoothing: if($value, antialiased, subpixel-antialiased);
+}
