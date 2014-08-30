@@ -2,6 +2,37 @@
 
 
 /*====================================================================================================================
+ * 余白
+ *====================================================================================================================*/
+
+// マージン
+@mixin rbox-margin($all: null, $vertical: null, $top: null, $bottom: null, $horizontal: null, $left: null, $right: null) {
+    margin: $all;
+    margin-bottom: $vertical;
+    margin-bottom: $bottom;
+    margin-left: $horizontal;
+    margin-left: $left;
+    margin-right: $horizontal;
+    margin-right: $right;
+    margin-top: $vertical;
+    margin-top: $top;
+}
+
+// パディング
+@mixin rbox-padding($all: null, $vertical: null, $top: null, $bottom: null, $horizontal: null, $left: null, $right: null) {
+    padding: $all;
+    padding-bottom: $vertical;
+    padding-bottom: $bottom;
+    padding-left: $horizontal;
+    padding-left: $left;
+    padding-right: $horizontal;
+    padding-right: $right;
+    padding-top: $vertical;
+    padding-top: $top;
+}
+
+
+/*====================================================================================================================
  * テキストレンダリング
  *====================================================================================================================*/
 
