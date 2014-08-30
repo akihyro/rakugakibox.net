@@ -86,6 +86,7 @@ module.exports = function(grunt) {
     csslint: {
       options: {
         "box-sizing": false,
+        "ids": false,
         "universal-selector": false,
       },
       styles: {
