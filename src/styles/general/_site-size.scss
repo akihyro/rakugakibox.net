@@ -1,0 +1,44 @@
+/* サイトサイズ */
+
+
+/*====================================================================================================================
+ * レンジ
+ *====================================================================================================================*/
+
+// サイト幅レンジ
+@mixin rbox-site-width-range {
+    @include rbox-width-range($rbox-site-min-width, $rbox-site-max-width);
+}
+
+
+/*====================================================================================================================
+ * メディア
+ *====================================================================================================================*/
+
+// 幅狭メディア（＜推奨幅）
+@mixin rbox-narrow-width-media {
+    @media not all and (min-width: #{$rbox-site-recommended-width}) {
+        @content;
+    }
+}
+
+// 非幅狭メディア（≧推奨幅）
+@mixin rbox-not-narrow-width-media {
+    @media only all and (min-width: #{$rbox-site-recommended-width}) {
+        @content;
+    }
+}
+
+// 幅広メディア（＞最大幅）
+@mixin rbox-wide-width-media {
+    @media not all and (max-width: #{$rbox-site-max-width}) {
+        @content;
+    }
+}
+
+// 非幅広メディア（≦最大幅）
+@mixin rbox-not-wide-width-media {
+    @media only all and (max-width: #{$rbox-site-max-width}) {
+        @content;
+    }
+}
