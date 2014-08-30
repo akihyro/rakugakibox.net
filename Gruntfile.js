@@ -84,6 +84,10 @@ module.exports = function(grunt) {
 
     // CSS検証
     csslint: {
+      options: {
+        "box-sizing": false,
+        "universal-selector": false,
+      },
       styles: {
         src: "dest.<%= rbox.env %>/styles/**/*.css",
       },
