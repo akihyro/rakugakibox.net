@@ -18,6 +18,11 @@
     margin-top: $top;
 }
 
+// マージン（位置指定）
+@mixin rbox-margin-at($position, $value) {
+    margin-#{$position}: $value;
+}
+
 // パディング
 @mixin rbox-padding($all: null, $vertical: null, $top: null, $bottom: null, $horizontal: null, $left: null, $right: null) {
     padding: $all;
@@ -29,6 +34,11 @@
     padding-right: $right;
     padding-top: $vertical;
     padding-top: $top;
+}
+
+// パディング（位置指定）
+@mixin rbox-padding-at($position, $value) {
+    padding-#{$position}: $value;
 }
 
 
