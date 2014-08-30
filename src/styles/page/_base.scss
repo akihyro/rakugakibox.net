@@ -12,10 +12,10 @@
 
 // HTML
 html {
-    @include text-size-adjust-none;
-    background-color: $base-color;
-    color: $text-color;
-    font: 0.875em/1.5 $base-font-family;
+    @include rbox-text-size-adjust-none;
+    background-color: $rbox-base-color;
+    color: $rbox-text-color;
+    font: 0.875em/1.5 $rbox-base-font-family;
     letter-spacing: 0.0625em;
     word-wrap: break-word;
 }
