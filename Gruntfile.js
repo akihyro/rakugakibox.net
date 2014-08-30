@@ -90,7 +90,7 @@ module.exports = function(grunt) {
         "universal-selector": false,
       },
       styles: {
-        src: "dest.<%= rbox.env %>/styles/**/*.css",
+        src: "dest.<%= rbox.env %>/styles/rakugaki-box.net.css",
       },
     },
 
