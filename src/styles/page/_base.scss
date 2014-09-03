@@ -24,6 +24,11 @@ html {
 body {
 }
 
+// リンク
+a {
+    @include rbox-underline-styled-link($rbox-main-color);
+}
+
 // イメージ
 img {
     @include rbox-width-range(0, 100%);
