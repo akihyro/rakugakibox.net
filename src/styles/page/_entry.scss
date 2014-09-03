@@ -65,4 +65,26 @@
         }
     }
 
+    // カテゴリ
+    .categories {
+        @include rbox-float(right);
+        display: block;
+        font-size: 0.75em;
+        text-align: right;
+        a {
+            @include rbox-category-link($with-icon-spacing: true);
+        }
+    }
+
+    // カスタム
+    .customized-header {
+        .entry-header-html {
+        }
+    }
+
+    // メニュー
+    .entry-header-menu {
+        display: none !important;
+    }
+
 }

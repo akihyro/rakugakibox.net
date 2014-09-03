@@ -43,6 +43,16 @@ img {
     overflow: hidden;
 }
 
+// カテゴリリンク
+@mixin rbox-category-link($with-icon-spacing: false) {
+    @include border-radius(0.25em);
+    @include inline-block;
+    @include rbox-color-styled-link($rbox-sub-color, $rbox-accent-color);
+    @include rbox-margin(0.25em);
+    @include rbox-padding($horizontal: 0.75em, $vertical: 0.25em);
+    background-color: $rbox-base-color;
+}
+
 
 /*====================================================================================================================
  * コンテナ

@@ -96,6 +96,7 @@ module.exports = function(grunt) {
       options: {
         "box-sizing": false,
         "ids": false,
+        "important": false,
         "qualified-headings": false,
         "shorthand": false,
         "unique-headings": false,
