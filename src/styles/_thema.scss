@@ -35,6 +35,7 @@ $rbox-title-font-family: "Verdana", $rbox-base-font-family;
 // ベース
 $rbox-base-color: rgb(240, 240, 240);
 $rbox-light-base-color: lighten($rbox-base-color, 10%);
+$rbox-dark-base-color: darken($rbox-base-color, 20%);
 
 // テキスト
 $rbox-text-color: rgb(60, 60, 60);

@@ -13,3 +13,16 @@
 // コンテナインナー
 #main .entry-inner {
 }
+
+
+/*====================================================================================================================
+ * ヘッダ
+ *====================================================================================================================*/
+
+// コンテナ
+#main .entry .entry-header {
+    @include rbox-float-container;
+    @include rbox-margin($bottom: 1em);
+    @include rbox-padding($horizontal: 1em, $top: 1em, $bottom: 0.25em);
+    border-bottom: dashed 1px $rbox-dark-base-color;
+}
