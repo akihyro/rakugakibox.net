@@ -1,0 +1,84 @@
+/* リンク */
+
+
+/*====================================================================================================================
+ * オプション
+ *====================================================================================================================*/
+
+// トランジション時間
+$rbox-underline-styled-link-duration: 0.25s !default;
+$rbox-color-styled-link-duration: 0.25s !default;
+$rbox-background-color-styled-link-duration: 0.25s !default;
+$rbox-opacity-styled-link-duration: 0.25s !default;
+
+
+/*====================================================================================================================
+ * アクティブ制御ブロック
+ *====================================================================================================================*/
+
+// リンクアクティブ
+@mixin rbox-when-link-active {
+    &:active, &:hover, &:focus {
+        @content;
+    }
+}
+
+// リンクアクティブアニメーション
+@mixin rbox-link-active-animation($duration) {
+    transition-duration: $duration;
+    @include rbox-when-link-active {
+        transition-duration: $duration;
+        @content;
+    }
+}
+
+
+/*====================================================================================================================
+ * リンクスタイル
+ *====================================================================================================================*/
+
+// 下線
+@mixin rbox-underline-styled-link($color: inherit, $normal: false, $active: true) {
+    color: $color;
+    text-decoration: if($normal, underline, none);
+    @include rbox-link-active-animation($rbox-underline-styled-link-duration) {
+        outline: none;
+        text-decoration: if($active, underline, none);
+        @content;
+    }
+}
+
+// 文字色
+@mixin rbox-color-styled-link($normal, $active: null) {
+    color: $normal;
+    text-decoration: none;
+    @include rbox-link-active-animation($rbox-color-styled-link-duration) {
+        color: $active;
+        outline: none;
+        @content;
+    }
+}
+
+// 背景色
+@mixin rbox-background-color-styled-link($color, $normal, $active: null) {
+    background-color: $normal;
+    color: $color;
+    text-decoration: none;
+    @include rbox-link-active-animation($rbox-background-color-styled-link) {
+        background-color: $active;
+        outline: none;
+        @content;
+    }
+}
+
+// 半透明
+@mixin rbox-opacity-styled-link($color: inherit, $normal: 1, $active: 0.75) {
+    @include opacity($normal);
+    color: $color;
+    text-decoration: none;
+    @include rbox-link-active-animation($rbox-opacity-styled-link-duration) {
+        @include opacity($active);
+        outline: none;
+        @content;
+    }
+}
