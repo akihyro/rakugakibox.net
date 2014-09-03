@@ -34,6 +34,15 @@ img {
     @include rbox-width-range(0, 100%);
 }
 
+// コンテンツアイテムボックス
+@mixin rbox-content-item-box {
+    @include border-radius(0.25em);
+    @include rbox-margin($bottom: 1em);
+    @include rbox-soft-border;
+    background-color: $rbox-light-base-color;
+    overflow: hidden;
+}
+
 
 /*====================================================================================================================
  * コンテナ
