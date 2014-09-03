@@ -18,16 +18,17 @@ $rbox-opacity-styled-link-duration: 0.25s !default;
 
 // リンクアクティブ
 @mixin rbox-when-link-active {
-    &:active, &:hover, &:focus {
+    &:active, &:focus, &.rbox-mouse-hover, &.rbox-touch-hover {
         @content;
     }
 }
 
 // リンクアクティブアニメーション
 @mixin rbox-link-active-animation($duration) {
-    transition-duration: $duration;
+    &.rbox-mouse-hover {
+        @include transition-duration($duration);
+    }
     @include rbox-when-link-active {
-        transition-duration: $duration;
         @content;
     }
 }

@@ -62,6 +62,7 @@
         overflow: hidden;
         a {
             @include rbox-color-styled-link($rbox-text-color, $rbox-accent-color);
+            display: block;
         }
     }
 

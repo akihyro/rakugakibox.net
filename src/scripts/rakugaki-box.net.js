@@ -26,4 +26,34 @@
         }
     );
 
+    // ホバー時に専用のクラスを割当てる
+    // ※スマートフォンでは CSS ":hover" がタッチ開始～終了のタイミングで適用されない為、独自実装する。
+    // ※マウスイベント/タッチイベント両方が発行された場合は、タッチイベントを優先する。
+    $(document).on("mouseenter", "a",
+        function(event) {
+            var target = $(event.currentTarget);
+            if (!target.hasClass("rbox-touch-hover")) {
+                target.addClass("rbox-mouse-hover");
+            }
+        }
+    );
+    $(document).on("mouseleave", "a",
+        function(event) {
+            var target = $(event.currentTarget);
+            target.removeClass("rbox-mouse-hover");
+        }
+    );
+    $(document).on("touchstart", "a",
+        function(event) {
+            var target = $(event.currentTarget);
+            target.addClass("rbox-touch-hover");
+        }
+    );
+    $(document).on("touchend touchcancel", "a",
+        function(event) {
+            var target = $(event.currentTarget);
+            target.removeClass("rbox-touch-hover");
+        }
+    );
+
 }($);
