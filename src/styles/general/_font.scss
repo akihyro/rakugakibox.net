@@ -1,0 +1,45 @@
+/* フォント */
+
+
+/*====================================================================================================================
+ * Awesome
+ *====================================================================================================================*/
+
+// フォントフェイス
+@include font-face(
+    "awesome",
+    font-files(
+        "fontawesome-webfont.woff",
+        "fontawesome-webfont.ttf",
+        "fontawesome-webfont.svg#fontawesomeregular"
+    ),
+    "fontawesome-webfont.eot",
+    normal,
+    normal
+);
+
+// フォント適用
+@mixin rbox-font-awesome {
+    @include rbox-font-smoothing;
+    font-family: "awesome";
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+}
+
+// アイコン
+@mixin rbox-icon-awesome($content) {
+    @include rbox-font-awesome;
+    content: $content;
+}
+
+// アイコンスペース
+@mixin rbox-icon-awesome-spacing($side) {
+    @include rbox-padding-at($side, 0.5em);
+}
+
+// アイコン+スペース
+@mixin rbox-icon-awesome-with-spacing($content, $spacing) {
+    @include rbox-icon-awesome($content);
+    @include rbox-icon-awesome-spacing($spacing);
+}
