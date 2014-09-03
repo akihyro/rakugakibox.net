@@ -43,6 +43,7 @@ $rbox-invert-text-color: rgb(255, 255, 255);
 
 // メイン
 $rbox-main-color: hsl(235deg, 30%, 60%);
+$rbox-light-main-color: lighten($rbox-main-color, 10%);
 $rbox-dark-main-color: darken($rbox-main-color, 20%);
 
 // サブ

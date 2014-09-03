@@ -64,7 +64,7 @@ $rbox-opacity-styled-link-duration: 0.25s !default;
     background-color: $normal;
     color: $color;
     text-decoration: none;
-    @include rbox-link-active-animation($rbox-background-color-styled-link) {
+    @include rbox-link-active-animation($rbox-background-color-styled-link-duration) {
         background-color: $active;
         outline: none;
         @content;

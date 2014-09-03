@@ -25,4 +25,32 @@
     @include rbox-margin($bottom: 1em);
     @include rbox-padding($horizontal: 1em, $top: 1em, $bottom: 0.25em);
     border-bottom: dashed 1px $rbox-dark-base-color;
+
+    // 日付
+    .date {
+        @include rbox-float(left);
+        @include rbox-margin($left: -1em, $right: 0.75em, $bottom: 0.5em);
+        display: block;
+        a {
+            @include rbox-background-color-styled-link(
+                $rbox-invert-text-color, $rbox-main-color, $rbox-light-main-color);
+            display: block;
+            time {
+                @include rbox-padding($horizontal: 0.75em, $vertical: 0.5em);
+                display: block;
+                .date-year, .date-month, .hyphen {
+                    font-size: 0.75em;
+                }
+                .date-month ~ .hyphen {
+                    display: none;
+                }
+                .date-day {
+                    display: block;
+                    font-size: 1.25em;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
 }

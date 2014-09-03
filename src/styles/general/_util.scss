@@ -6,7 +6,8 @@
  *====================================================================================================================*/
 
 // マージン
-@mixin rbox-margin($all: null, $vertical: null, $top: null, $bottom: null, $horizontal: null, $left: null, $right: null) {
+@mixin rbox-margin($all: null,
+    $vertical: null, $top: null, $bottom: null, $horizontal: null, $left: null, $right: null) {
     margin: $all;
     margin-bottom: $vertical;
     margin-bottom: $bottom;
@@ -24,7 +25,8 @@
 }
 
 // パディング
-@mixin rbox-padding($all: null, $vertical: null, $top: null, $bottom: null, $horizontal: null, $left: null, $right: null) {
+@mixin rbox-padding($all: null,
+    $vertical: null, $top: null, $bottom: null, $horizontal: null, $left: null, $right: null) {
     padding: $all;
     padding-bottom: $vertical;
     padding-bottom: $bottom;
