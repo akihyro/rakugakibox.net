@@ -24,6 +24,9 @@ $rbox-base-font-family:
     "Meiryo",
     sans-serif;
 
+// タイトル
+$rbox-title-font-family: "Verdana", $rbox-base-font-family;
+
 
 /*====================================================================================================================
  * カラー
@@ -34,6 +37,7 @@ $rbox-base-color: rgb(240, 240, 240);
 
 // テキスト
 $rbox-text-color: rgb(60, 60, 60);
+$rbox-invert-text-color: rgb(255, 255, 255);
 
 // メイン
 $rbox-main-color: hsl(235deg, 30%, 60%);

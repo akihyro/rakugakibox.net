@@ -1,0 +1,48 @@
+/* タイトル */
+
+
+/*====================================================================================================================
+ * オプション
+ *====================================================================================================================*/
+
+// 背景イメージ
+$rbox-title-background-image: "title.png";
+
+
+/*====================================================================================================================
+ * タイトル
+ *====================================================================================================================*/
+
+// コンテナ
+#blog-title {
+    background-color: $rbox-main-color;
+}
+
+// コンテナインナー
+#blog-title-inner {
+    @include background-image(image-url($rbox-title-background-image));
+    @include background-size(auto);
+    @include rbox-padding($bottom: image-height($rbox-title-background-image));
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    @media only screen and (max-width: #{image-width($rbox-title-background-image)}) {
+        @include background-size(contain);
+    }
+}
+
+// タイトル
+#title {
+    @include rbox-padding($horizontal: 0.5em, $top: 0.25em);
+    color: $rbox-invert-text-color;
+    font-family: $rbox-title-font-family;
+    font-size: 2em;
+    font-weight: bold;
+    a {
+        @include rbox-underline-styled-link;
+    }
+}
+
+// 説明
+#blog-description {
+    display: none;
+}
