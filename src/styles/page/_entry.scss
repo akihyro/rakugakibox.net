@@ -53,4 +53,16 @@
         }
     }
 
+    // タイトル
+    .entry-title {
+        @include min-height(2.5em);
+        display: block;
+        font-size: 1.25em;
+        font-weight: bold;
+        overflow: hidden;
+        a {
+            @include rbox-color-styled-link($rbox-text-color, $rbox-accent-color);
+        }
+    }
+
 }

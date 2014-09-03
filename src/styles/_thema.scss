@@ -50,6 +50,9 @@ $rbox-dark-main-color: darken($rbox-main-color, 20%);
 $rbox-sub-color: adjust-color($rbox-main-color, $hue: -80deg);
 $rbox-light-sub-color: lighten($rbox-sub-color, 10%);
 
+// アクセント
+$rbox-accent-color: adjust-color($rbox-main-color, $hue: -220deg, $saturation: 40%, $lightness: 5%);
+
 
 /*====================================================================================================================
  * サイトサイズ
