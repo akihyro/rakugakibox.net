@@ -21,16 +21,30 @@ $browser-minimum-versions: (
  * フォント
  *====================================================================================================================*/
 
-// ベース
-$rbox-base-font-family:
+// ゴシック
+$rbox-sans-serif-font-family:
     "ヒラギノ角ゴ ProN W3",
     "Hiragino Kaku Gothic ProN",
     "メイリオ",
     "Meiryo",
     sans-serif;
 
+// 等幅
+$rbox-monospace-font-family:
+    "Osaka－等幅",
+    "Osaka-mono",
+    "ＭＳ ゴシック",
+    "MS Gothic",
+    monospace;
+
+// ベース
+$rbox-base-font-family: $rbox-sans-serif-font-family;
+
 // タイトル
 $rbox-title-font-family: "Verdana", $rbox-base-font-family;
+
+// コード
+$rbox-code-font-family: "Courier New", "Courier", $rbox-monospace-font-family;
 
 
 /*====================================================================================================================
@@ -44,6 +58,7 @@ $rbox-dark-base-color: darken($rbox-base-color, 20%);
 
 // テキスト
 $rbox-text-color: rgb(60, 60, 60);
+$rbox-light-text-color: lighten($rbox-text-color, 30%);
 $rbox-invert-text-color: rgb(255, 255, 255);
 
 // メイン
@@ -57,6 +72,7 @@ $rbox-light-sub-color: lighten($rbox-sub-color, 10%);
 
 // アクセント
 $rbox-accent-color: adjust-color($rbox-main-color, $hue: -220deg, $saturation: 40%, $lightness: 5%);
+$rbox-light-accent-color: lighten($rbox-accent-color, 10%);
 
 
 /*====================================================================================================================
