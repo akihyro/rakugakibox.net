@@ -43,6 +43,10 @@ $rbox-invert-text-color: rgb(255, 255, 255);
 $rbox-main-color: hsl(235deg, 30%, 60%);
 $rbox-dark-main-color: darken($rbox-main-color, 20%);
 
+// サブ
+$rbox-sub-color: adjust-color($rbox-main-color, $hue: -80deg);
+$rbox-light-sub-color: lighten($rbox-sub-color, 10%);
+
 
 /*====================================================================================================================
  * サイトサイズ
