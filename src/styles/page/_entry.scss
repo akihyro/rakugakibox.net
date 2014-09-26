@@ -324,3 +324,111 @@
     }
 
 }
+
+
+/*====================================================================================================================
+ * フッタ
+ *====================================================================================================================*/
+
+// はてなスターコンテナの高さ
+$hatena-star-container-height: 24px;
+
+// コンテナ
+#main .entry .entry-footer {
+    @include rbox-float-container;
+    @include rbox-padding($horizontal: 1em, $top: 1em);
+
+    // セクション
+    .entry-footer-section {
+        @include rbox-float(right);
+        @include rbox-height-range($min: $hatena-star-container-height);
+        @include rbox-margin($bottom: 0.5em);
+        color: $rbox-light-text-color;
+        text-align: right;
+
+        // 投稿者
+        .author {
+            @include rbox-margin($left: 1em);
+            &:before {
+                @include rbox-icon-awesome-with-spacing("\f040", $spacing: right);
+            }
+        }
+
+        // 投稿日時
+        .entry-footer-time {
+            @include rbox-margin($left: 1em);
+            &:before {
+                @include rbox-icon-awesome-with-spacing("\f017", $spacing: right);
+            }
+            a {
+                @include rbox-underline-styled-link;
+            }
+        }
+
+    }
+
+    // スター, カスタム
+    .hatena-star-container,
+    .customized-footer {
+        @include rbox-float(left);
+        @include rbox-margin($right: 1em, $top: 0, $bottom: 0.5em);
+    }
+
+    // カスタム
+    .customized-footer {
+        .social-buttons {
+        }
+        .entry-footer-html {
+        }
+    }
+
+    // コメントボックス
+    .comment-box {
+        @include rbox-float-clear;
+        @include rbox-margin($horizontal: -1em, $bottom: 1em);
+        @include rbox-padding(1em);
+        background-color: rgba($rbox-light-sub-color, 0.125);
+        border-left: solid 0.25em $rbox-sub-color;
+
+        // コメント
+        .comment {
+            .entry-comment {
+                @include rbox-margin($bottom: 1em);
+                .comment-user-name {
+                    @include rbox-margin($bottom: 0.5em);
+                }
+                .comment-content {
+                    p {
+                        @include rbox-margin($bottom: 0.5em);
+                    }
+                }
+                .comment-metadata {
+                    color: $rbox-light-text-color;
+                    font-size: 0.75em;
+                }
+            }
+        }
+
+        // コメントを書く
+        .leave-comment-title {
+            @include rbox-color-styled-link($rbox-sub-color, $rbox-light-sub-color);
+            &:before {
+                @include rbox-icon-awesome-with-spacing("\f075", $spacing: right);
+                font-size: 1.25em;
+            }
+        }
+    }
+
+    // インデックスページの場合, 年月日エントリリストの場合
+    body.page-index &,
+    body.page-entries-year-month-day & {
+        @include rbox-narrow-width-media {
+            display: none;
+        }
+        .customized-footer,
+        .comment-box {
+            display: none;
+        }
+    }
+
+}

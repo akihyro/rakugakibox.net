@@ -79,6 +79,12 @@
     max-width: $max;
 }
 
+// 高さレンジ
+@mixin rbox-height-range($min: 0, $max: none) {
+    @include min-height($min);
+    max-height: $max;
+}
+
 // 正方形サイズ
 @mixin rbox-square-size($size) {
     height: $size;

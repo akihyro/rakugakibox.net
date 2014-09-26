@@ -7,8 +7,8 @@
 
 // コンテナ
 #top-editarea {
+    @include rbox-height-range($min: 0.5em);
     @include rbox-margin($bottom: 1em);
-    @include min-height(0.5em);
     background-color: $rbox-dark-main-color;
 }
 
