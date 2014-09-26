@@ -9,10 +9,10 @@ module.exports = function(grunt) {
     // rakugaki-box.net
     rbox: (function() {
       var rbox = { };
-      rbox.env = grunt.option("env") == "pro" ? "pro" : "dev";
-      rbox.envPro = rbox.env == "pro";
-      rbox.envDev = rbox.env == "dev";
-      rbox.domain = "resource.blog" + (rbox.envPro ? ".pro2" : ".dev") + ".rakugaki-box.net";
+      rbox.stage = grunt.option("stage") == "pro" ? "pro" : "dev";
+      rbox.stageIsPro = rbox.stage == "pro";
+      rbox.stageIsDev = rbox.stage == "dev";
+      rbox.domain = "resource.blog" + (rbox.stageIsPro ? ".pro2" : ".dev") + ".rakugaki-box.net";
       return rbox;
     })(),
 
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
         files: [
           {
             src: "src/.htaccess",
-            dest: "dest.<%= rbox.env %>/.htaccess",
+            dest: "dest.<%= rbox.stage %>/.htaccess",
           },
         ],
       },
@@ -37,7 +37,7 @@ module.exports = function(grunt) {
               "fontawesome-webfont.ttf",
               "fontawesome-webfont.woff",
             ],
-            dest: "dest.<%= rbox.env %>/fonts",
+            dest: "dest.<%= rbox.stage %>/fonts",
           },
         ],
       },
@@ -47,7 +47,7 @@ module.exports = function(grunt) {
             expand: true,
             cwd: "src/images",
             src: "*.png",
-            dest: "dest.<%= rbox.env %>/images",
+            dest: "dest.<%= rbox.stage %>/images",
           },
         ],
       },
@@ -60,11 +60,11 @@ module.exports = function(grunt) {
               "jquery.js",
               "jquery.min.js",
             ],
-            dest: "dest.<%= rbox.env %>/scripts",
+            dest: "dest.<%= rbox.stage %>/scripts",
           },
           {
             src: "src/scripts/rakugaki-box.net.js",
-            dest: "dest.<%= rbox.env %>/scripts/rakugaki-box.net.js",
+            dest: "dest.<%= rbox.stage %>/scripts/rakugaki-box.net.js",
           },
         ],
       },
@@ -74,13 +74,13 @@ module.exports = function(grunt) {
     compass: {
       styles: {
         options: {
-          environment: "<%= rbox.envPro ? 'production' : 'development' %>",
+          environment: "<%= rbox.stageIsPro ? 'production' : 'development' %>",
           bundleExec: true,
           sassDir: "src/styles",
-          cssDir: "dest.<%= rbox.env %>/styles",
-          imagesDir: "dest.<%= rbox.env %>/images",
-          javascriptsDir: "dest.<%= rbox.env %>/scripts",
-          fontsDir: "dest.<%= rbox.env %>/fonts",
+          cssDir: "dest.<%= rbox.stage %>/styles",
+          imagesDir: "dest.<%= rbox.stage %>/images",
+          javascriptsDir: "dest.<%= rbox.stage %>/scripts",
+          fontsDir: "dest.<%= rbox.stage %>/fonts",
           httpPath: "http://<%= rbox.domain %>",
           httpStylesheetsPath: "http://<%= rbox.domain %>/styles",
           httpImagesPath: "http://<%= rbox.domain %>/images",
@@ -106,7 +106,7 @@ module.exports = function(grunt) {
         "zero-units": false,
       },
       styles: {
-        src: "dest.<%= rbox.env %>/styles/rakugaki-box.net.css",
+        src: "dest.<%= rbox.stage %>/styles/rakugaki-box.net.css",
       },
     },
 
@@ -117,8 +117,8 @@ module.exports = function(grunt) {
       },
       styles: {
         files: {
-          "dest.<%= rbox.env %>/styles/rakugaki-box.net.min.css": [
-            "dest.<%= rbox.env %>/styles/rakugaki-box.net.css",
+          "dest.<%= rbox.stage %>/styles/rakugaki-box.net.min.css": [
+            "dest.<%= rbox.stage %>/styles/rakugaki-box.net.css",
           ],
         },
       },
@@ -133,7 +133,7 @@ module.exports = function(grunt) {
         "Gruntfile.js",
       ],
       scripts: [
-        "dest.<%= rbox.env %>/scripts/rakugaki-box.net.js",
+        "dest.<%= rbox.stage %>/scripts/rakugaki-box.net.js",
       ],
     },
 
@@ -144,9 +144,9 @@ module.exports = function(grunt) {
       },
       scripts: {
         files: {
-          "dest.<%= rbox.env %>/scripts/rakugaki-box.net.min.js": [
-            "dest.<%= rbox.env %>/scripts/jquery.min.js",
-            "dest.<%= rbox.env %>/scripts/rakugaki-box.net.js",
+          "dest.<%= rbox.stage %>/scripts/rakugaki-box.net.min.js": [
+            "dest.<%= rbox.stage %>/scripts/jquery.min.js",
+            "dest.<%= rbox.stage %>/scripts/rakugaki-box.net.js",
           ],
         },
       },
@@ -158,9 +158,9 @@ module.exports = function(grunt) {
         auth: {
           host: "rakugaki-box.net",
           port: 22,
-          authKey: "<%= rbox.env %>",
+          authKey: "<%= rbox.stage %>",
         },
-        src: "dest.<%= rbox.env %>",
+        src: "dest.<%= rbox.stage %>",
         dest: "/virtual/akihyrox/public_html/<%= rbox.domain %>",
       },
     },
@@ -168,7 +168,7 @@ module.exports = function(grunt) {
     // クリーン
     clean: {
       dest: [
-        "dest.<%= rbox.env %>",
+        "dest.<%= rbox.stage %>",
       ],
     },
 
