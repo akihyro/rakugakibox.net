@@ -25,3 +25,43 @@
     }
 
 }
+
+
+/*====================================================================================================================
+ * モジュール#Search
+ *  [Title]
+ *      Search
+ *====================================================================================================================*/
+
+// コンテナ
+#box2 .hatena-module-search-box {
+
+    // タイトル
+    .hatena-module-title {
+        &:before {
+            @include rbox-icon-awesome("\f002");
+        }
+    }
+
+    // ボディ
+    .hatena-module-body {
+        form {
+            @include rbox-margin(0);
+            @include rbox-padding(0);
+            height: 100%;
+            width: 100%;
+            .search-module-input {
+                @include rbox-margin(0);
+                @include rbox-padding(1em);
+                background-color: transparent;
+                border-style: none;
+                height: 100%;
+                width: 100%;
+            }
+            .search-module-button {
+                display: none;
+            }
+        }
+    }
+
+}
