@@ -1,0 +1,105 @@
+/* コンテナ::コンテンツ::メイン::アーカイブエントリ */
+
+
+/*====================================================================================================================
+ * アーカイブエントリブロック
+ *====================================================================================================================*/
+
+// コンテナ
+#main .archive-entries {
+    @include rbox-content-item-box;
+}
+
+
+/*====================================================================================================================
+ * アーカイブエントリ
+ *====================================================================================================================*/
+
+// デフォルトサムネイルアイコン
+$rbox-archive-entry-default-thumbnail-icon: "site-icon.png";
+$rbox-archive-entry-default-thumbnail-icon-2x: "site.png";
+
+// サムネイルアイコンスペース
+$rbox-archive-entry-thumbnail-icon-spacing: 1em;
+
+// サムネイルアイコンリンクサイズ
+$rbox-archive-entry-thumbnail-icon-link-size:
+    ($rbox-thumbnail-icon-size + $rbox-archive-entry-thumbnail-icon-spacing * 2);
+
+// コンテナインナー
+#main .archive-entry {
+    @include rbox-float-container;
+    @include rbox-height-range($min: $rbox-archive-entry-thumbnail-icon-link-size);
+    @include rbox-padding(1em, $left: $rbox-archive-entry-thumbnail-icon-link-size);
+    @include rbox-position(relative);
+    border-top: dashed 1px $rbox-dark-base-color;
+    &:first-child {
+        border-top-style: none;
+    }
+
+    // 日付
+    .date {
+        @include rbox-float(right);
+        @include rbox-margin($left: 1em, $bottom: 1em);
+        color: $rbox-light-text-color;
+        font-size: 0.75em;
+        a {
+            @include rbox-underline-styled-link;
+            time {
+            }
+        }
+    }
+
+    // タイトル
+    .entry-title {
+        font-size: 1.25em;
+        font-weight: bold;
+        a {
+            @include rbox-color-styled-link($rbox-text-color, $rbox-accent-color);
+        }
+    }
+
+    // カテゴリ
+    .categories {
+        @include rbox-float(right);
+        display: block;
+        font-size: 0.75em;
+        a {
+            @include rbox-category-link($with-icon-spacing: true);
+        }
+    }
+
+    // サムネイル
+    &:before, > a {
+        @include rbox-position(absolute,
+            $left: $rbox-archive-entry-thumbnail-icon-spacing,
+            $top: $rbox-archive-entry-thumbnail-icon-spacing);
+        display: block;
+    }
+    &:before {
+        @include rbox-thumbnail-icon($bg: true,
+            $icon: image-url($rbox-archive-entry-default-thumbnail-icon),
+            $icon-2x: image-url($rbox-archive-entry-default-thumbnail-icon-2x),
+            $with-border: true);
+        content: "";
+    }
+    > a .entry-thumb {
+        @include rbox-thumbnail-icon($bg: true);
+    }
+
+    // 説明
+    .entry-description {
+        display: none;
+    }
+
+    // ソーシャルボタン
+    .social-buttons {
+        @include float-left;
+        .bookmark-widget-counter {
+            display: none;
+        }
+        .star-container {
+        }
+    }
+
+}

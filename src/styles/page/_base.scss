@@ -34,6 +34,11 @@ img {
     @include rbox-width-range(0, 100%);
 }
 
+
+/*====================================================================================================================
+ * パーツ
+ *====================================================================================================================*/
+
 // コンテンツアイテムボックス
 @mixin rbox-content-item-box {
     @include border-radius(0.25em);
@@ -41,6 +46,22 @@ img {
     @include rbox-soft-border;
     background-color: $rbox-light-base-color;
     overflow: hidden;
+}
+
+// サムネイルアイコンサイズ
+$rbox-thumbnail-icon-size: 5em !default;
+
+// サムネイルアイコン
+@mixin rbox-thumbnail-icon($bg: false, $icon: null, $icon-2x: null, $with-border: false) {
+    @include border-radius(0.5em);
+    @include rbox-square-size($rbox-thumbnail-icon-size);
+    @if $bg {
+        @include background-size(cover);
+        @include rbox-background-image-for-multi-resolution($image: $icon, $image-2x: $icon-2x);
+    }
+    @if $with-border {
+        @include rbox-soft-border;
+    }
 }
 
 // カテゴリリンク

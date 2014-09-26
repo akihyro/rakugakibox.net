@@ -132,3 +132,39 @@
     -moz-osx-font-smoothing: if($value, grayscale, auto);
     -webkit-font-smoothing: if($value, antialiased, subpixel-antialiased);
 }
+
+
+/*====================================================================================================================
+ * 高精細ディスプレイ向け
+ *====================================================================================================================*/
+
+// 最小解像度メディア
+@mixin rbox-min-resolution-media($dppx) {
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: #{$dppx}),
+    only screen and (-moz-min-device-pixel-ratio: #{$dppx}),
+    only screen and (-o-min-device-pixel-ratio: #{$dppx}#{/1}),
+    only screen and (min-device-pixel-ratio: #{$dppx}),
+    only screen and (min-resolution: #{$dppx}#{dppx}) {
+        @content;
+    }
+}
+
+// 解像度2dppx以上のメディア
+@mixin rbox-min-resolution-2dppx-media {
+    @include rbox-min-resolution-media(2) {
+        @content;
+    }
+}
+
+// 背景イメージ
+@mixin rbox-background-image-for-multi-resolution($image, $image-2x: null) {
+    @if $image {
+        @include background-image($image);
+    }
+    @include rbox-min-resolution-2dppx-media {
+        @if $image-2x {
+            @include background-image($image-2x);
+        }
+    }
+}

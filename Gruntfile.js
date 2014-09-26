@@ -97,6 +97,7 @@ module.exports = function(grunt) {
         "adjoining-classes": false,
         "box-sizing": false,
         "fallback-colors": false,
+        "floats": false,
         "font-sizes": false,
         "ids": false,
         "important": false,
