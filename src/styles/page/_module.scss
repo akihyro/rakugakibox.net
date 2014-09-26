@@ -1,0 +1,27 @@
+/* コンテナ::コンテンツ::サイドバー::モジュール */
+
+
+/*====================================================================================================================
+ * モジュール
+ *====================================================================================================================*/
+
+// コンテナ
+#box2 .hatena-module {
+    @include rbox-content-item-box;
+
+    // タイトル
+    .hatena-module-title {
+        @include border-top-radius(inherit);
+        @include rbox-padding($horizontal: 0.5em, $vertical: 0.25em);
+        background-color: $rbox-light-main-color;
+        color: $rbox-invert-text-color;
+        a {
+            @include rbox-underline-styled-link;
+        }
+    }
+
+    // ボディ
+    .hatena-module-body {
+    }
+
+}
