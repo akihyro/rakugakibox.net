@@ -34,6 +34,16 @@ img {
     @include rbox-width-range(0, 100%);
 }
 
+// テキスト入力欄
+input, textarea {
+    color: inherit;
+    font: inherit;
+    outline-style: none;
+    @include rbox-placeholder {
+        color: $rbox-light-text-color;
+    }
+}
+
 
 /*====================================================================================================================
  * パーツ

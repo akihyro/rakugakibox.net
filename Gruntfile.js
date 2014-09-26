@@ -95,6 +95,7 @@ module.exports = function(grunt) {
     csslint: {
       options: {
         "adjoining-classes": false,
+        "box-model": false,
         "box-sizing": false,
         "fallback-colors": false,
         "floats": false,
