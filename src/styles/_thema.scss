@@ -74,6 +74,11 @@ $rbox-light-sub-color: lighten($rbox-sub-color, 10%);
 $rbox-accent-color: adjust-color($rbox-main-color, $hue: -220deg, $saturation: 40%, $lightness: 5%);
 $rbox-light-accent-color: lighten($rbox-accent-color, 10%);
 
+// Twitter
+$rbox-twitter-color: hsl(190deg, 65%, 60%);
+$rbox-light-twitter-color: lighten($rbox-twitter-color, 10%);
+$rbox-twitter-text-color: white;
+
 
 /*====================================================================================================================
  * サイトサイズ

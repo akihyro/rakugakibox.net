@@ -209,3 +209,60 @@ $rbox-module-new-entries-thumbnail-icon-link-size:
     }
 
 }
+
+
+/*====================================================================================================================
+ * モジュール#Tweets
+ *  [Title]
+ *      Tweets
+ *  [HTML]
+ *      <div class="hatena-module-tweets-top">
+ *          <a href="https://twitter.com/intent/follow?screen_name=akihyro"
+ *              class="twitter-follow-link"
+ *          >Follow @akihyro</a>
+ *      </div>
+ *      <div class="hatena-module-tweets-timeline">
+ *          <a href="https://twitter.com/akihyro"
+ *              class="twitter-timeline"
+ *              data-widget-id="459605066517737472"
+ *              data-chrome="noheader nofooter noborders transparent"
+ *          >Tweets by @akihyro</a>
+ *      </div>
+ *====================================================================================================================*/
+
+// コンテナ
+#box2 .hatena-module-html {
+
+    // タイトル
+    .hatena-module-title {
+        &:before {
+            @include rbox-icon-awesome("\f099");
+        }
+    }
+
+    // ボディ
+    .hatena-module-body {
+        .hatena-module-tweets-top {
+            @include rbox-padding(0.25em);
+            border-bottom: dashed 1px $rbox-dark-base-color;
+            .twitter-follow-link {
+                @include border-radius(0.25em);
+                @include rbox-background-color-styled-link(
+                    $rbox-twitter-text-color, $rbox-twitter-color, $rbox-light-twitter-color);
+                @include rbox-padding($horizontal: 0.5em, $vertical: 0.25em);
+                display: block;
+                text-align: center;
+                &:before {
+                    @include rbox-icon-awesome-with-spacing("\f099", $spacing: right);
+                }
+            }
+        }
+        .hatena-module-tweets-timeline {
+            @include rbox-padding($left: 0.5em);
+            iframe {
+                width: 100%;
+            }
+        }
+    }
+
+}
