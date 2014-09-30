@@ -103,6 +103,7 @@ module.exports = function(grunt) {
         "ids": false,
         "important": false,
         "qualified-headings": false,
+        "regex-selectors": false,
         "shorthand": false,
         "unique-headings": false,
         "universal-selector": false,
