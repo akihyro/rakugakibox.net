@@ -266,3 +266,39 @@ $rbox-module-new-entries-thumbnail-icon-link-size:
     }
 
 }
+
+
+/*====================================================================================================================
+ * モジュール#Category
+ *  [Title]
+ *      Category
+ *====================================================================================================================*/
+
+// コンテナ
+#box2 .hatena-module-category {
+
+    // タイトル
+    .hatena-module-title {
+        &:before {
+            @include rbox-icon-awesome("\f02c");
+        }
+    }
+
+    // ボディ
+    .hatena-module-body {
+        @include rbox-padding(0.5em);
+
+        // リスト
+        .hatena-urllist {
+            display: block;
+            li {
+                @include inline-block;
+                a {
+                    @include rbox-category-link;
+                }
+            }
+        }
+
+    }
+
+}
