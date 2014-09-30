@@ -7,7 +7,8 @@
 
 // トピックパス
 #top-box .breadcrumb > div,
-#main-inner > h2 {
+#main-inner > h2,
+#main-inner .search-result {
     @include border-radius(0.25em);
     @include rbox-margin($bottom: 0.5em);
     @include rbox-padding($horizontal: 0.5em, $vertical: 0.25em);
@@ -16,4 +17,9 @@
     a {
         @include rbox-underline-styled-link;
     }
+}
+
+// 検索結果直後のフォーム
+#main-inner .search-result form {
+    display: none;
 }
