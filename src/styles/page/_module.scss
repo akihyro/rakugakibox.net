@@ -302,3 +302,48 @@ $rbox-module-new-entries-thumbnail-icon-link-size:
     }
 
 }
+
+
+/*====================================================================================================================
+ * モジュール#Archive
+ *  [Title]
+ *      Archive
+ *====================================================================================================================*/
+
+// コンテナ
+#box2 .hatena-module-archive {
+
+    // タイトル
+    .hatena-module-title {
+        &:before {
+            @include rbox-icon-awesome("\f133");
+        }
+    }
+
+    // ボディ
+    .hatena-module-body {
+        @include rbox-padding(0.5em);
+
+        // リスト
+        .hatena-urllist {
+            .archive-module-year {
+                .archive-module-button {
+                    .archive-module-hide-button {
+                    }
+                    .archive-module-show-button {
+                    }
+                }
+                .archive-module-year-title {
+                }
+                .archive-module-months {
+                    .archive-module-month {
+                        .archive-module-month-title {
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+}
