@@ -12,7 +12,7 @@ module.exports = function(grunt) {
       rbox.stage = grunt.option("stage") == "pro" ? "pro" : "dev";
       rbox.stageIsPro = rbox.stage == "pro";
       rbox.stageIsDev = rbox.stage == "dev";
-      rbox.domain = "resource.blog" + (rbox.stageIsPro ? ".pro2" : ".dev") + ".rakugaki-box.net";
+      rbox.domain = "resource.blog" + (rbox.stageIsPro ? "" : ".dev") + ".rakugaki-box.net";
       return rbox;
     })(),
 

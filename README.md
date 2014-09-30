@@ -63,17 +63,17 @@ Grunt タスク
 ### ビルド
 
 ```
-$ grunt build --env=[dev|pro]
+$ grunt build --stage=[dev|pro]
 ```
 
 ### デプロイ
 
 ```
-$ grunt deploy --env=[dev|pro]
+$ grunt deploy --stage=[dev|pro]
 ```
 
 ### クリーン
 
 ```
-$ grunt clean --env=[dev|pro]
+$ grunt clean --stage=[dev|pro]
 ```
