@@ -165,19 +165,12 @@
     }
 }
 
-// 解像度2dppx以上のメディア
-@mixin rbox-min-resolution-2dppx-media {
-    @include rbox-min-resolution-media(2) {
-        @content;
-    }
-}
-
 // 背景イメージ
 @mixin rbox-background-image-for-multi-resolution($image, $image-2x: null) {
     @if $image {
         @include background-image($image);
     }
-    @include rbox-min-resolution-2dppx-media {
+    @include rbox-min-resolution-media(2) {
         @if $image-2x {
             @include background-image($image-2x);
         }

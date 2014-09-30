@@ -134,3 +134,78 @@ $rbox-profile-icon-2x: "profile.png";
     }
 
 }
+
+
+/*====================================================================================================================
+ * モジュール#NewEntry
+ *  [Title]
+ *      New Entry
+ *====================================================================================================================*/
+
+// デフォルトサムネイルアイコン
+$rbox-module-new-entries-default-thumbnail-icon: "site-icon.png";
+$rbox-module-new-entries-default-thumbnail-icon-2x: "site.png";
+
+// サムネイルアイコンスペース
+$rbox-module-new-entries-thumbnail-icon-spacing: 0.5em;
+
+// サムネイルアイコンリンクサイズ
+$rbox-module-new-entries-thumbnail-icon-link-size:
+    ($rbox-thumbnail-icon-size + $rbox-module-new-entries-thumbnail-icon-spacing * 2);
+
+// コンテナ
+#box2 .hatena-module-recent-entries {
+
+    // タイトル
+    .hatena-module-title {
+        &:before {
+            @include rbox-icon-awesome("\f0ca");
+        }
+    }
+
+    // ボディ
+    .hatena-module-body {
+
+        // リスト
+        .recent-entries {
+            @include rbox-padding($vertical: 0.5em);
+            display: block;
+            .recent-entries-item {
+                display: block;
+                .recent-entries-item-inner {
+                    @include rbox-position(relative);
+                    @include rbox-row-select-styled-link(
+                        $active-background-color: rgba($rbox-light-accent-color, 0.5),
+                        $active-border-color: $rbox-accent-color);
+                    display: block;
+                    &:before, .recent-entries-image-link {
+                        @include rbox-position(absolute,
+                            $left: $rbox-module-new-entries-thumbnail-icon-spacing,
+                            $top: $rbox-module-new-entries-thumbnail-icon-spacing);
+                        display: block;
+                    }
+                    &:before {
+                        @include rbox-thumbnail-icon($bg: true,
+                            $icon: image-url($rbox-module-new-entries-default-thumbnail-icon),
+                            $icon-2x: image-url($rbox-module-new-entries-default-thumbnail-icon-2x),
+                            $with-border: true);
+                        content: "";
+                    }
+                    .recent-entries-image-link, .recent-entries-image-link img {
+                        @include rbox-thumbnail-icon;
+                    }
+                    .recent-entries-title-link {
+                        @include rbox-height-range($min: $rbox-module-new-entries-thumbnail-icon-link-size);
+                        @include rbox-padding(
+                            $rbox-module-new-entries-thumbnail-icon-spacing,
+                            $left: $rbox-module-new-entries-thumbnail-icon-link-size);
+                        display: block;
+                        font: inherit;
+                    }
+                }
+            }
+        }
+
+    }
+
+}

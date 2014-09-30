@@ -83,3 +83,18 @@ $rbox-opacity-styled-link-duration: 0.25s !default;
         @content;
     }
 }
+
+
+/*====================================================================================================================
+ * 拡張リンクスタイル
+ *====================================================================================================================*/
+
+// 行選択スタイルリンク
+@mixin rbox-row-select-styled-link($color: inherit, $border-side: left, $border-style: solid, $border-width: 0.375em,
+    $normal-background-color: transparent, $normal-border-color: transparent,
+    $active-background-color: null, $active-border-color: null) {
+    border-#{$border-side}: $border-style $border-width $normal-border-color;
+    @include rbox-background-color-styled-link($color, $normal-background-color, $active-background-color) {
+        border-#{$border-side}-color: $active-border-color;
+    }
+}
