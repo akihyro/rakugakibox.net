@@ -367,19 +367,20 @@ $hatena-star-container-height: 24px;
 
     }
 
-    // スター, カスタム
-    .hatena-star-container,
-    .customized-footer {
+    // スター
+    .hatena-star-container {
         @include rbox-float(left);
         @include rbox-margin($right: 1em, $top: 0, $bottom: 0.5em);
     }
 
+    // ソーシャルボタン
+    .social-buttons {
+        @include rbox-float-clear;
+        @include rbox-margin($bottom: 0.5em);
+    }
+
     // カスタム
     .customized-footer {
-        .social-buttons {
-        }
-        .entry-footer-html {
-        }
     }
 
     // コメントボックス
@@ -425,6 +426,7 @@ $hatena-star-container-height: 24px;
         @include rbox-narrow-width-media {
             display: none;
         }
+        .social-buttons,
         .customized-footer,
         .comment-box {
             display: none;
