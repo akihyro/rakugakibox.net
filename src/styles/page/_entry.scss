@@ -419,9 +419,10 @@ $hatena-star-container-height: 24px;
         }
     }
 
-    // インデックスページの場合, 年月日エントリリストの場合
+    // インデックスページの場合, 年月日別リスト, カテゴリ別リストの場合
     body.page-index &,
-    body.page-entries-year-month-day & {
+    body.page-entries-year-month-day &,
+    body.page-category-category_name & {
         @include rbox-narrow-width-media {
             display: none;
         }
