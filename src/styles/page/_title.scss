@@ -2,14 +2,6 @@
 
 
 /*====================================================================================================================
- * オプション
- *====================================================================================================================*/
-
-// 背景イメージ
-$rbox-title-background-image: "title.png";
-
-
-/*====================================================================================================================
  * タイトル
  *====================================================================================================================*/
 
@@ -20,19 +12,11 @@ $rbox-title-background-image: "title.png";
 
 // コンテナインナー
 #blog-title-inner {
-    @include background-image(image-url($rbox-title-background-image));
-    @include background-size(auto);
-    @include rbox-padding($bottom: image-height($rbox-title-background-image));
-    background-position: right bottom;
-    background-repeat: no-repeat;
-    @media only all and (max-width: #{image-width($rbox-title-background-image)}) {
-        @include background-size(contain);
-    }
 }
 
 // タイトル
 #title {
-    @include rbox-padding($horizontal: 0.5em, $top: 0.25em);
+    @include rbox-padding($horizontal: 0.5em, $top: 0.25em, $bottom: 2em);
     color: $rbox-invert-text-color;
     font-family: $rbox-title-font-family;
     font-size: 2em;
