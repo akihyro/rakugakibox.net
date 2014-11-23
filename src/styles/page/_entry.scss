@@ -68,7 +68,6 @@
 
     // カテゴリ
     .categories {
-        @include rbox-float(right);
         display: block;
         font-size: 0.75em;
         text-align: right;
