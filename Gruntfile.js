@@ -13,19 +13,12 @@ module.exports = function(grunt) {
       rbox.stageIsPro = rbox.stage == "pro";
       rbox.stageIsDev = rbox.stage == "dev";
       rbox.domain = "resource.blog" + (rbox.stageIsPro ? "" : ".dev") + ".rakugaki-box.net";
+      rbox.keys = grunt.file.readJSON(".keys.json");
       return rbox;
     })(),
 
     // コピー
     copy: {
-      htaccess: {
-        files: [
-          {
-            src: "src/.htaccess",
-            dest: "dest.<%= rbox.stage %>/.htaccess",
-          },
-        ],
-      },
       fonts: {
         files: [
           {
@@ -158,15 +151,36 @@ module.exports = function(grunt) {
     },
 
     // デプロイ
-    "sftp-deploy": {
-      dest: {
-        auth: {
-          host: "rakugaki-box.net",
-          port: 22,
-          authKey: "<%= rbox.stage %>",
+    aws_s3: {
+      options: {
+        accessKeyId: "<%= rbox.keys.aws[rbox.stage].accessKeyId %>",
+        secretAccessKey: "<%= rbox.keys.aws[rbox.stage].secretAccessKey %>",
+        region: "ap-northeast-1",
+        bucket: "<%= rbox.domain %>",
+        displayChangesOnly: true,
+        params: {
+          StorageClass: "REDUCED_REDUNDANCY",
         },
-        src: "dest.<%= rbox.stage %>",
-        dest: "/virtual/akihyrox/public_html/<%= rbox.domain %>",
+      },
+      dest: {
+        files: [
+          {
+            action: "delete",
+            differential: true,
+            cwd: "dest.<%= rbox.stage %>",
+            dest: "/",
+          },
+          {
+            action: "upload",
+            differential: true,
+            cwd: "dest.<%= rbox.stage %>",
+            src: [
+              "**",
+            ],
+            expand: true,
+            dest: "",
+          },
+        ],
       },
     },
 
@@ -183,7 +197,6 @@ module.exports = function(grunt) {
   grunt.registerTask("default", "build");
   grunt.registerTask("build", [
     "gruntfile",
-    "htaccess",
     "fonts",
     "images",
     "styles",
@@ -191,9 +204,6 @@ module.exports = function(grunt) {
   ]);
   grunt.registerTask("gruntfile", [
     "jshint:gruntfile",
-  ]);
-  grunt.registerTask("htaccess", [
-    "copy:htaccess",
   ]);
   grunt.registerTask("fonts", [
     "copy:fonts",
@@ -212,7 +222,7 @@ module.exports = function(grunt) {
     "uglify:scripts",
   ]);
   grunt.registerTask("deploy", [
-    "sftp-deploy:dest",
+    "aws_s3:dest",
   ]);
 
 };

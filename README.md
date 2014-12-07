@@ -40,18 +40,20 @@ $ bower install
 $ bundle install
 ```
 
-### デプロイ先 ログイン情報設定
+### 鍵情報 設定
 
 ```
-$ vi .ftppass
+$ vi .keys.json
 {
-  "dev": {
-    "username" : "your_username",
-    "password" : "your_password"
-  },
-  "pro": {
-    "username" : "your_username",
-    "password" : "your_password"
+  "aws": {
+    "dev": {
+      "accessKeyId": "...",
+      "secretAccessKey": "..."
+    },
+    "pro": {
+      "accessKeyId": "...",
+      "secretAccessKey": "..."
+    }
   }
 }
 ```
