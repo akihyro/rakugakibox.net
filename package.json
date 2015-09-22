@@ -16,7 +16,9 @@
     "scripts": {
         "tasks": "gulp --tasks-simple",
         "clean": "gulp clean",
-        "build": "gulp build"
+        "build": "gulp build",
+        "deploy:dev": "gulp deploy:dev",
+        "deploy:pro": "gulp deploy:pro"
     },
     "devDependencies": {
         "bootstrap-sass": "3.3.5",
@@ -24,6 +26,7 @@
         "del": "2.0.2",
         "font-awesome": "4.4.0",
         "gulp": "3.9.0",
+        "gulp-awspublish": "3.0.0",
         "gulp-minify-css": "1.2.1",
         "gulp-rename": "1.2.2",
         "gulp-ruby-sass": "2.0.3",

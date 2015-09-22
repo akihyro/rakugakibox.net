@@ -5,6 +5,7 @@
 var browserify = require("browserify");
 var del = require("del");
 var gulp = require("gulp");
+var awspublish = require('gulp-awspublish');
 var minifyCss = require("gulp-minify-css");
 var rename = require("gulp-rename");
 var sass = require("gulp-ruby-sass");
@@ -87,4 +88,40 @@ gulp.task("build:scripts", function() {
         .pipe(rename({extname: ".min.js"}))
         .pipe(uglify())
         .pipe(gulp.dest("dist/scripts"));
+});
+
+/*--------------------------------------------------------------------------------------------------------------------
+ * デプロイタスク: 開発環境
+ *--------------------------------------------------------------------------------------------------------------------*/
+
+gulp.task("deploy:dev", ["build"], function() {
+    var publisher = awspublish.create({
+        region: "ap-northeast-1",
+        params: {
+            Bucket: "resource.blog.dev.rakugakibox.net",
+            StorageClass: "REDUCED_REDUNDANCY",
+        },
+    });
+    return gulp.src("dist/**/*")
+        .pipe(publisher.publish())
+        .pipe(publisher.sync())
+        .pipe(awspublish.reporter());
+});
+
+/*--------------------------------------------------------------------------------------------------------------------
+ * デプロイタスク: 本番環境
+ *--------------------------------------------------------------------------------------------------------------------*/
+
+gulp.task("deploy:pro", ["build"], function() {
+    var publisher = awspublish.create({
+        region: "ap-northeast-1",
+        params: {
+            Bucket: "resource.blog.rakugakibox.net",
+            StorageClass: "REDUCED_REDUNDANCY",
+        },
+    });
+    return gulp.src("dist/**/*")
+        .pipe(publisher.publish())
+        .pipe(publisher.sync())
+        .pipe(awspublish.reporter());
 });
