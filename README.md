@@ -20,3 +20,10 @@ $ cd rakugakibox.net
 ```sh
 $ npm install
 ```
+
+タスクリスト
+------------
+
+```sh
+$ npm run tasks
+```

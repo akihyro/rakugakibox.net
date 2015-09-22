@@ -14,7 +14,9 @@
     "license": "MIT",
     "private": "true",
     "scripts": {
+        "tasks": "gulp --tasks-simple"
     },
     "devDependencies": {
+        "gulp": "3.9.0"
     }
 }
