@@ -1,0 +1,20 @@
+{
+    "name": "rakugakibox.net",
+    "version": "1.0.0",
+    "description": "rakugakibox.net web site.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/akihyro/rakugakibox.net.git"
+    },
+    "author": {
+        "name": "Akihiro Kondo",
+        "email": "akihyro@gmail.com",
+        "url": "http://rakugakibox.net"
+    },
+    "license": "MIT",
+    "private": "true",
+    "scripts": {
+    },
+    "devDependencies": {
+    }
+}
