@@ -2,11 +2,15 @@
  * gulpfile
  *====================================================================================================================*/
 
+var browserify = require("browserify");
 var del = require("del");
 var gulp = require("gulp");
 var minifyCss = require("gulp-minify-css");
 var rename = require("gulp-rename");
 var sass = require("gulp-ruby-sass");
+var uglify = require("gulp-uglify");
+var buffer = require("vinyl-buffer");
+var source = require("vinyl-source-stream");
 
 /*--------------------------------------------------------------------------------------------------------------------
  * お掃除タスク
@@ -22,6 +26,7 @@ gulp.task("build", [
     "build:fonts",
     "build:images",
     "build:styles",
+    "build:scripts",
 ]);
 
 /*--------------------------------------------------------------------------------------------------------------------
@@ -67,4 +72,19 @@ gulp.task("build:styles", function() {
         .pipe(rename({extname: ".min.css"}))
         .pipe(minifyCss({keepSpecialComments: 0}))
         .pipe(gulp.dest("dist/styles"));
+});
+
+/*--------------------------------------------------------------------------------------------------------------------
+ * ビルドタスク: スクリプト
+ *--------------------------------------------------------------------------------------------------------------------*/
+
+gulp.task("build:scripts", function() {
+    return browserify("src/scripts/rakugakibox.net.js")
+        .bundle()
+        .pipe(source("rakugakibox.net.js"))
+        .pipe(buffer())
+        .pipe(gulp.dest("dist/scripts"))
+        .pipe(rename({extname: ".min.js"}))
+        .pipe(uglify())
+        .pipe(gulp.dest("dist/scripts"));
 });
