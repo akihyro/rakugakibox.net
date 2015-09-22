@@ -27,3 +27,17 @@ $ npm install
 ```sh
 $ npm run tasks
 ```
+
+お掃除
+------
+
+```sh
+$ npm run clean
+```
+
+ビルド
+------
+
+```sh
+$ npm run build
+```

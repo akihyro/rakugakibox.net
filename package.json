@@ -14,9 +14,12 @@
     "license": "MIT",
     "private": "true",
     "scripts": {
-        "tasks": "gulp --tasks-simple"
+        "tasks": "gulp --tasks-simple",
+        "clean": "gulp clean",
+        "build": "gulp build"
     },
     "devDependencies": {
+        "del": "2.0.2",
         "gulp": "3.9.0"
     }
 }
