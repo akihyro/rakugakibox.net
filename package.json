@@ -19,6 +19,7 @@
         "build": "gulp build"
     },
     "devDependencies": {
+        "bootstrap-sass": "3.3.5",
         "del": "2.0.2",
         "font-awesome": "4.4.0",
         "gulp": "3.9.0"
