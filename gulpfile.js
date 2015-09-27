@@ -4,12 +4,15 @@
 
 var del = require("del");
 var gulp = require("gulp");
+var minifyCss = require("gulp-minify-css");
+var rename = require("gulp-rename");
+var sass = require("gulp-ruby-sass");
 
 /*--------------------------------------------------------------------------------------------------------------------
  * お掃除タスク
  *--------------------------------------------------------------------------------------------------------------------*/
 
-gulp.task("clean", del.bind(null, "dist"));
+gulp.task("clean", del.bind(null, ["dist", ".sass-cache"]));
 
 /*--------------------------------------------------------------------------------------------------------------------
  * ビルドタスク
@@ -18,6 +21,7 @@ gulp.task("clean", del.bind(null, "dist"));
 gulp.task("build", [
     "build:fonts",
     "build:images",
+    "build:styles",
 ]);
 
 /*--------------------------------------------------------------------------------------------------------------------
@@ -42,4 +46,25 @@ gulp.task("build:images", function() {
         "!src/images/**/*.sai",
     ])
         .pipe(gulp.dest("dist/images"));
+});
+
+/*--------------------------------------------------------------------------------------------------------------------
+ * ビルドタスク: スタイルシート
+ *--------------------------------------------------------------------------------------------------------------------*/
+
+gulp.task("build:styles", function() {
+    return sass("src/styles/rakugakibox.net.scss", {
+        bundleExec: true,
+        emitCompileError: true,
+        lineNumbers: true,
+        loadPath: [
+            "node_modules/bootstrap-sass/assets/stylesheets",
+            "node_modules/font-awesome/scss",
+        ],
+        style: "expanded",
+    })
+        .pipe(gulp.dest("dist/styles"))
+        .pipe(rename({extname: ".min.css"}))
+        .pipe(minifyCss({keepSpecialComments: 0}))
+        .pipe(gulp.dest("dist/styles"));
 });

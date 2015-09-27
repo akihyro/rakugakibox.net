@@ -1,3 +1,5 @@
+/.sass-cache/
+/bundle/
 /dist/
 /node_modules/
 /npm-debug.log

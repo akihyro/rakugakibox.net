@@ -5,6 +5,7 @@ rakugakibox.net
 ----------
 
 * Node.js v0.12.7
+* Ruby v2.2.3
 
 ローカルリポジトリ作成
 ----------------------
@@ -19,6 +20,7 @@ $ cd rakugakibox.net
 
 ```sh
 $ npm install
+$ bundle install
 ```
 
 タスクリスト
