@@ -1,6 +1,5 @@
-.keys.json
 /.sass-cache/
-/bower_components/
 /bundle/
-/dest.*/
+/dist/
 /node_modules/
+/npm-debug.log

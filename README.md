@@ -1,81 +1,54 @@
-rakugaki-box.net
-================
+rakugakibox.net
+===============
 
+必要なもの
+----------
 
-環境構築手順
-------------
+* Node.js v0.12.7
+* Ruby v2.2.3
 
-### 事前に必要なもの
+ローカルリポジトリ作成
+----------------------
 
-* node.js
-    * node.js
-    * grunt-cli
-    * bower
-* Ruby
-    * ruby
-    * bundler
-
-### リポジトリ クローン
-
-```
-$ git clone git@github.com:akihyro/rakugaki-box.net.git
-$ cd rakugaki-box.net
+```sh
+$ git clone git@github.com:akihyro/rakugakibox.net.git
+$ cd rakugakibox.net
 ```
 
-### node.js パッケージ インストール
+依存モジュール インストール
+---------------------------
 
-```
+```sh
 $ npm install
-```
-
-### bower パッケージ インストール
-
-```
-$ bower install
-```
-
-### bundler パッケージ インストール
-
-```
 $ bundle install
 ```
 
-### 鍵情報 設定
-
-```
-$ vi .keys.json
-{
-  "aws": {
-    "dev": {
-      "accessKeyId": "...",
-      "secretAccessKey": "..."
-    },
-    "pro": {
-      "accessKeyId": "...",
-      "secretAccessKey": "..."
-    }
-  }
-}
-```
-
-
-Grunt タスク
+タスクリスト
 ------------
 
-### ビルド
-
-```
-$ grunt build --stage=[dev|pro]
+```sh
+$ npm run tasks
 ```
 
-### デプロイ
+お掃除
+------
 
-```
-$ grunt deploy --stage=[dev|pro]
+```sh
+$ npm run clean
 ```
 
-### クリーン
+ビルド
+------
 
+```sh
+$ npm run build
 ```
-$ grunt clean --stage=[dev|pro]
+
+デプロイ
+--------
+
+```sh
+$ export AWS_ACCESS_KEY_ID="..."
+$ export AWS_SECRET_ACCESS_KEY="..."
+$ npm run deploy:{stage}
 ```
