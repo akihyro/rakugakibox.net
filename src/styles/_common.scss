@@ -1,0 +1,223 @@
+/*====================================================================================================================
+ * 共通
+ *====================================================================================================================*/
+
+/*--------------------------------------------------------------------------------------------------------------------
+ * マージン/パディング
+ *--------------------------------------------------------------------------------------------------------------------*/
+
+@mixin margin(
+        $all: null,
+        $vertical: null, $top: null, $bottom: null,
+        $horizontal: null, $left: null, $right: null
+) {
+    margin: $all;
+    margin-bottom: $vertical;
+    margin-bottom: $bottom;
+    margin-left: $horizontal;
+    margin-left: $left;
+    margin-right: $horizontal;
+    margin-right: $right;
+    margin-top: $vertical;
+    margin-top: $top;
+}
+
+@mixin padding(
+        $all: null,
+        $vertical: null, $top: null, $bottom: null,
+        $horizontal: null, $left: null, $right: null
+) {
+    padding: $all;
+    padding-bottom: $vertical;
+    padding-bottom: $bottom;
+    padding-left: $horizontal;
+    padding-left: $left;
+    padding-right: $horizontal;
+    padding-right: $right;
+    padding-top: $vertical;
+    padding-top: $top;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------
+ * 位置
+ *--------------------------------------------------------------------------------------------------------------------*/
+
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+    bottom: $bottom;
+    left: $left;
+    position: $position;
+    right: $right;
+    top: $top;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------
+ * サイズ
+ *--------------------------------------------------------------------------------------------------------------------*/
+
+@mixin size($width: null, $height: null,
+        $min-width: null, $max-width: null, $min-height: null, $max-height: null) {
+    height: $height;
+    max-height: $max-height;
+    max-width: $max-width;
+    min-height: $min-height;
+    min-width: $min-width;
+    width: $width;
+}
+
+@function sizes-to($position, $sizes) {
+    @if length($sizes) == 1 {
+        @if index(top right bottom left, $position) {
+            @return nth($sizes, 1);
+        }
+    } @else if length($sizes) == 2 {
+        @if index(top bottom, $position) {
+            @return nth($sizes, 1);
+        } @else if index(right left, $position) {
+            @return nth($sizes, 2);
+        }
+    } @else if length($sizes) == 3 {
+        @if $position == top {
+            @return nth($sizes, 1);
+        } @else if index(right left, $position) {
+            @return nth($sizes, 2);
+        } @else if $position == bottom {
+            @return nth($sizes, 3);
+        }
+    } @else if length($sizes) == 4 {
+        @if $position == top {
+            @return nth($sizes, 1);
+        } @else if $position == right {
+            @return nth($sizes, 2);
+        } @else if $position == bottom {
+            @return nth($sizes, 3);
+        } @else if $position == left {
+            @return nth($sizes, 4);
+        }
+    }
+}
+
+/*--------------------------------------------------------------------------------------------------------------------
+ * アイコン
+ *--------------------------------------------------------------------------------------------------------------------*/
+
+@mixin glyphicon-before($icon) {
+    &:before {
+        @extend .glyphicon;
+        @include margin($right: 0.5em);
+        content: $icon;
+        @content;
+    }
+}
+
+@mixin glyphicon-after($icon) {
+    &:after {
+        @extend .glyphicon;
+        @include margin($left: 0.5em);
+        content: $icon;
+        @content;
+    }
+}
+
+@mixin fa-before($icon) {
+    &:before {
+        @extend .fa;
+        @include margin($right: 0.5em);
+        content: $icon;
+        @content;
+    }
+}
+
+@mixin fa-after($icon) {
+    &:after {
+        @extend .fa;
+        @include margin($left: 0.5em);
+        content: $icon;
+        @content;
+    }
+}
+
+/*--------------------------------------------------------------------------------------------------------------------
+ * Bootstrap カスタマイズ, 共通スタイル
+ *--------------------------------------------------------------------------------------------------------------------*/
+
+.bg-secondary {
+    color: #fff;
+}
+@include bg-variant(".bg-secondary", $brand-secondary);
+
+.bg-primary a, .bg-secondary a {
+    color: inherit;
+}
+
+.label {
+    @include margin($vertical: 0.25em);
+    @include padding($vertical: 0.25em);
+    display: inline-block;
+    font-weight: normal;
+    line-height: inherit;
+}
+
+table {
+    @extend .table, .table-bordered, .table-striped;
+}
+
+blockquote {
+    @include padding($vertical: $font-size-large, $horizontal: $font-size-large * 2);
+    @include fa-before($fa-var-quote-left) {
+        @include position(absolute, $left: 0.5em, $top: 0.5em);
+    }
+    @include fa-after($fa-var-quote-right) {
+        @include position(absolute, $right: 0.5em, $bottom: 0.5em);
+    }
+    background-color: lighten($blockquote-border-color, 5%);
+    border-left: 5px solid darken($blockquote-border-color, 5%);
+    z-index: 0;
+
+    &:before, &:after {
+        color: darken($blockquote-border-color, 5%);
+        display: block;
+        font-size: $font-size-large;
+        z-index: -1;
+    }
+
+}
+
+pre {
+    overflow: auto;
+    word-break: keep-all;
+    word-wrap: normal;
+
+    &::-webkit-scrollbar {
+        background-color: transparent;
+        &:horizontal {
+            height: $line-height-computed / 4;
+        }
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $pre-border-color;
+        border-radius: $border-radius-base;
+        &:horizontal {
+            height: $line-height-computed / 4;
+        }
+    }
+
+}
+
+.thumbnail {
+    overflow: hidden;
+}
+
+.weakly-text {
+    @extend small;
+    color: lighten($text-color, 20%);
+
+    a {
+        color: inherit;
+    }
+
+}
+
+.icon-pro {
+    @extend .hidden;
+}
